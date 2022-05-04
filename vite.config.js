@@ -29,7 +29,10 @@ export default () => {
   return defineConfig({
     plugins: [react()],
     server: {
-      port: 5000,
+      port: 3000,
+      watch: {
+        usePolling: true
+      }
       // host: "0.0.0.0"
     },
     build: {
@@ -52,27 +55,27 @@ export default () => {
       //     entryFileNames: "[name].bundle.js",
       //     dir: "dist",
       //   },
-        // plugins: [
-        // Resolve bare module specifiers to relative paths
-        // resolve({
-        // 	browser: true
-        // }),
-        // commonjs({
-        // 	sourceMap: false
-        // }),
-        // babel config
-        // babel(babelConfig),
-        // Minify JS
-        // terser({
-        // 	format: {
-        // 		comments: false
-        // 	},
-        // 	compress: false,
-        // 	module: true
-        // }),
-        // Print bundle summary
-        // summary({})
-        // ]
+      // plugins: [
+      // Resolve bare module specifiers to relative paths
+      // resolve({
+      // 	browser: true
+      // }),
+      // commonjs({
+      // 	sourceMap: false
+      // }),
+      // babel config
+      // babel(babelConfig),
+      // Minify JS
+      // terser({
+      // 	format: {
+      // 		comments: false
+      // 	},
+      // 	compress: false,
+      // 	module: true
+      // }),
+      // Print bundle summary
+      // summary({})
+      // ]
       // },
     },
   });

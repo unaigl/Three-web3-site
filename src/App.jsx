@@ -3,10 +3,13 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import VideoList from "./Videos/VideoList";
 // import VideoForm from "./Videos/VideoForm";
-// import App from "./THREE/App";
-import Navbar from './components/Navbar/Navbar';
-import { UtilsContextProvider } from "./components/THREE/context/Context";
-import Game from "./components/THREE/gaming/Game";
+// import App from "./App";
+import Navbar from './components/navbar/Navbar';
+import { UtilsContextProvider } from "./components/context/Context";
+import Game from "./components/gaming/Game";
+import Chair from "./components/product/Chair";
+import Photos from "./components/pathScroll/Photos";
+import Path from "./components/pathScroll/Path";
 
 
 
@@ -26,7 +29,10 @@ const App = () => {
             <Route path="/new-video" component={VideoForm} />
             <Route path="/update/:id" component={VideoForm} /> */}
             {/* <Route path="/three" component={App} /> */}
-              <Route exact path="/plane" element={<Game />}/>
+              <Route path="/game" element={<Game />}/>
+              <Route path="/chair" element={<Chair />}/>
+              <Route exact path="/photos" element={<Photos />}/>
+              <Route path="/path" element={<Path />}/>
           </Routes>
             </UtilsContextProvider>
           {/* <ToastContainer /> */}
