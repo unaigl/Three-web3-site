@@ -1,5 +1,5 @@
 import { Physics } from "@react-three/cannon";
-import { CameraShake, OrbitControls, Stars } from "@react-three/drei";
+import { CameraShake, OrbitControls, Stars, Html } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import React, { useContext, useState } from "react";
 import { Vector3 } from "three";
@@ -30,6 +30,7 @@ export default function Game() {
     const vec = new Vector3();
     const { camera, mouse , events} = useThree();
     useFrame(() => {
+      // este vector "vec", en su parametro z es el que hace que la camara este constantemente en el 7.
         camera.position.lerp(vec.set(mouse.x * 3, mouse.y * 3, 7), 0.05);
       // TODO me esta permitiendo cambiar " utils.objetivePosition" sin utilizar Provider.Consumer
       utils.objetivePosition = camera.position;
@@ -47,22 +48,24 @@ export default function Game() {
         camera={{ position: [0, 0, 3000], fov: 90, rotation: [0, 0, 0] }}
         // shadows
       >
+          <Html fullscreen>
+            LET GO
+          </Html>
         <CameraShake
           yawFrequency={0.1}
           pitchFrequency={0.1}
           rollFrequency={0.1}
         />
-        <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} />
+        <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
         <color attach="background" args={["#080101"]} />
         <Lights />
         <fog attach="fog" args={["#94ebd8", 0, 100]} />
 
-        <HtmlText
+        {/* <HtmlText
           setplay={setplay}
           play={play}
           win={win}
-        />
-        
+        /> */}
 
         <Rig>
           <Physics>

@@ -1,141 +1,107 @@
-import { OrbitControls, Stars } from "@react-three/drei";
+import { Physics } from "@react-three/cannon";
+import { OrbitControls } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useBox, Physics } from "@react-three/cannon";
-
 import React, { Suspense } from "react";
-import * as THREE from 'three'
 // Mine
 import "../App.css";
 import { Lights } from "../light/Lights";
-import Texture from "../context/Texture";  
-// import KnotCurve from './KnotCurve.js' 
-
+import KnotCurvePosition from './KnotCurvePosition';
+// import Texture from "../context/Texture";  
+import MiddleBox from './MiddleBox';
 
 
 // Recorrido de "camera" en base a scroll. Sin fisicas. Con eventos de onMouse o mousemove...
 
 export default function Path() {
+    
+    // Utilizamos solamente el "useState" para volver a renderizar el componente y asi poder renderizar todos los elementos "MiddleBox" que queremos 
+    // sacar de la funcion "map"
+    const [update, updateState] = React.useState(0);
 
-    function CameraMove(props) {
-        const { camera } = useThree();
+    function CameraMove() {
+        const { camera, mouse } = useThree();
         
+        // Cada vez que se dispare wheel, se usaran los valores y y position para que en cada frame se mueva la camara y de sensacion de scroll
         window.addEventListener("wheel", onMouseWheel)
-        // window.addEventListener("scroll", onMouseWheel)
-
+        window.addEventListener("scroll", onMouseScroll)
+        
         let y = 0;
         let position = 0;
 
         function onMouseWheel(e) {
-            y = e.deltaY * -0.00001
-            // y = 0.001
-            console.log(camera.position)
+            y = e.deltaY * 0.00001
+        }
+        
+        // TODO Como calcular que se dispare una funcion cuando nos acercamos a unno de los objetos/elementos?ç
+        // Podriamos estar checkeando en cada frame si la camara esta cerca o no del objeto, y si esta cerca, disparar una funcion.
+        // Buscar bibliotecas ya escritas que tengan esta funcion.
+        // o
+        // Podriamos contar cuantas veces se le ha dado scroll y llevar un contador. Si el contado esta entre alfa y beta, disparar una funcion. 
+        function onMouseScroll(e) {
+            console.log('lunes')
         }
         
         useFrame(() => {
+            // 
             position += y;
-            y *= 0.98
-            // camera.rotation.x = 0
-            // camera.rotation.y = 0
-            // camera.rotation.z = 0
+            y *= 0.99
             const pos = KnotCurvePosition(position)
             camera.position.x = pos.x
             camera.position.y = pos.y
             camera.position.z = pos.z
         })
-
-        const childrenArray = React.Children.toArray(props.children)
-        return <group >{childrenArray}</group>;
     }
     
-    function KnotCurvePosition (t, optionalTarget) {
-
-        var point = optionalTarget || new THREE.Vector3();
-
-        t *= 2 * Math.PI;
-
-        var R = 10;
-        var s = 50;
-
-        var x = s * Math.sin(t);
-        var y = Math.cos(t) * (R + s * Math.cos(t));
-        var z = Math.sin(t) * (R + s * Math.cos(t));
-
-        return point.set(x, y, z);;
-
+    // positionCamera
+    const positionCamera = KnotCurvePosition(0)
+    
+    // Agregar Boxes a lo largo del path
+    var boxPosition = [];
+    const createBoxes = () => {
+        for (let i = 0; i < 10; i++) {
+            let posi = KnotCurvePosition((i + 1) *1.1)
+            let posit = [posi.x, posi.y, posi.z]
+            boxPosition.push(posit)
+        }
     }
-    
-    const Box = () => {
+    createBoxes();
+    setTimeout(()=>{updateState(1)} , 100)
 
-        const [ref, api] = useBox(() => ({
-            mass: 0,
-            type: "Dynamic",
-            args: [2, 2, 2],
-        }));
-        
-        window.addEventListener("wheel", onMouseWheel)
-        // window.addEventListener("scroll", onMouseWheel)
-
-        let y = 0;
-        let position = 0;
-
-        function onMouseWheel(e) {
-            y = e.deltaY * -0.00001
-            // y = 0.001
-            // console.log(camera.position)
-        }
-        
-        const hitBox = ()=>{
-            y = 0.0001
-        }
-
-        useFrame(() => {
-            position += y;
-            y *= 0.98
-            const pos = KnotCurvePosition(position)
-            api.position.set(pos.x / 1.2, pos.y / 1.2, pos.z / 1.2);
-        });
-
-        return (
-            <mesh ref={ref} onClick={hitBox}>
-                <boxBufferGeometry attach="geometry" args={[2, 2, 2]}  />
-                <meshStandardMaterial />
-            </mesh>
-        );
-    };
-    
-    
     return (
         <div className="row">
             <div className="col-md-12 my-screen">
-                {/* <button className="btn-primary" style={{ width: '100px', height: '100px', background: 'black'}} onClick={onMouseWheel}>CLIKC</button> */}
                 <Canvas
-                    camera={{ position: [0, 0, KnotCurvePosition(0)], rotation: [0, 0, 0] }}
+                    camera={{ position: positionCamera }}
                     >
-                    <CameraMove/> 
+                    <CameraMove /> 
                     <Physics>
-                        <Box /> 
+                        <group>
+                            // TODO Hay que volver a renderizar para que salgan los demas cubos
+                            {boxPosition && boxPosition.map((po, i)=>{
+                                console.log(po)
+                                return (<MiddleBox key={i} po={po} />)
+                            })}
+                        </group>
                     </Physics>
-
-                    
                     
                     <Suspense fallback={null}>
-                        <Texture />
-                    </Suspense>
                     
-                        <OrbitControls enableZoom={false} enablePan={true} enableRotate={true} />
+                    </Suspense>
+                    {/* Utilizando "enablePan"  en lugar de "enableRotate", conseguimos poder girar la camara, NO SE porque, EN PRODUCCION IGUAL NO FUNCIONA*/}
+                    <OrbitControls enableZoom={false} enablePan={true} enableRotate={true} enableDamping={false} />
                     <color attach="background" args={["#a64141"]} />
                     <Lights />
-                    {/* <fog attach="fog" args={["#94ebd8", 0, 100]} /> */}
-                    <Stars
+                    <fog attach="fog" args={["#94ebd8", 0, 100]} />
+                    {/* <Stars
                         radius={1}
-                        depth={30}
+                        depth={50}
                         count={500}
                         factor={3}
                         saturation={.1}
                         fade
                         speed={1}
                         color={3}
-                        />
+                        /> */}
                 </Canvas>
             </div>
         </div>

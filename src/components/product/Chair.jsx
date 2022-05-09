@@ -51,7 +51,7 @@ const Chair = () => {
           >
             <color attach="background" args={["#376bb0"]}></color>
             <Lights />
-            <OrbitControls enableZoom={false} enablePan={true} enableRotate={true} />
+            <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} />
             <Stars
               radius={.5}
               depth={30}

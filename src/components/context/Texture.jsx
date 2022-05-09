@@ -24,6 +24,14 @@ const Texture = ()=> {
                 </Plane>
             )
         })}
+        {photos && photos.map((photo, index) => {
+
+            return (
+                <Plane args={[1, 1]} position={[3, -1.5 * index, -4]}>
+                    <meshMatcapMaterial matcap={photo} key={index}/>
+                </Plane>
+            )
+        })}
         {/* <Plane args={[5,5]} position={[0, 0, -2.2]}>
             <meshMatcapMaterial matcap={matcap1} />
         </Plane>

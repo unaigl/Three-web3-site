@@ -8,7 +8,7 @@ import Navbar from './components/navbar/Navbar';
 import { UtilsContextProvider } from "./components/context/Context";
 import Game from "./components/gaming/Game";
 import Chair from "./components/product/Chair";
-import Photos from "./components/pathScroll/Photos";
+import Photos from "./components/product/Photos";
 import Path from "./components/pathScroll/Path";
 
 

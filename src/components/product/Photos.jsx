@@ -22,7 +22,9 @@ export default function Photos() {
         let position = 0;
 
         function onMouseWheel(e) {
+            // if (position > 10 || position > -10) return
             y = e.deltaY * -0.0007
+            console.log(camera.rotation)
         }
         
         useFrame(() => {
@@ -44,14 +46,14 @@ export default function Photos() {
             <div className="col-md-12 my-screen">
                 {/* <button className="btn-primary" style={{ width: '100px', height: '100px', background: 'black'}} onClick={onMouseWheel}>CLIKC</button> */}
                 <Canvas
-                    camera={{ position: [0, 0, 3], rotation: [0, 0, 0] }}
+                    camera={{ position: [0, 0, 1], rotation: [0, 0, 0] }}
                 >
                     <CameraMove>
                     <Suspense fallback={null}>
                         <Texture />
                     </Suspense>
                     
-                        <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} />
+                        <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
                     <color attach="background" args={["#a64141"]} />
                     <Lights />
                     {/* <fog attach="fog" args={["#94ebd8", 0, 100]} /> */}

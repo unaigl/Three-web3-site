@@ -1,9 +1,7 @@
+import { Web3Provider } from '@ethersproject/providers';
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { Web3Provider } from '@ethersproject/providers';
-import { Web3ReactProvider } from '@web3-react/core';
-import Web3ReactConnectionComponent from '../connectors/Web3ReactConnectionComponent'
 
 window.onload = function() {
 	localStorage.clear();
