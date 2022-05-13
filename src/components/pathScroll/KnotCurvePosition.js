@@ -10,7 +10,7 @@ export default function KnotCurvePosition(t, optionalTarget) {
     var s = 50;
 
     var x = s * Math.sin(t);
-    // Para que se quede plano, se queda un infinito
+    // Para que se quede plano, se queda una geometria que dibuja un infinito
     // var y = Math.cos(t) * (R + s * Math.cos(t));
     var y = 0;
     var z = Math.sin(t) * (R + s * Math.cos(t));

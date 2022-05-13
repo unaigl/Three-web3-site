@@ -48,14 +48,14 @@ export default function Photos() {
                 <Canvas
                     camera={{ position: [0, 0, 1], rotation: [0, 0, 0] }}
                 >
-                    <CameraMove>
+                    <color attach="background" args={["#a64141"]} />
+                    <Lights />
+                    <CameraMove />
                     <Suspense fallback={null}>
                         <Texture />
                     </Suspense>
                     
                         <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
-                    <color attach="background" args={["#a64141"]} />
-                    <Lights />
                     {/* <fog attach="fog" args={["#94ebd8", 0, 100]} /> */}
                     <Stars
                         radius={1}
@@ -67,7 +67,6 @@ export default function Photos() {
                         speed={1}
                         color={3}
                     />
-                    </CameraMove>
                 </Canvas>
             </div>
         </div>

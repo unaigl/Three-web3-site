@@ -1,7 +1,4 @@
 import { useBox } from "@react-three/cannon";
-import { useFrame, useThree } from "@react-three/fiber";
-import KnotCurvePosition from './KnotCurvePosition' 
-import * as THREE from 'three'
 
 const MiddleBox = (props) => {
 
@@ -9,6 +6,7 @@ const MiddleBox = (props) => {
         mass: 0,
         type: "Dynamic",
         args: [2, 2, 2],
+        lookAt: [props.cameraPosition]
     }));
 
     // api.position.set(Vector3)

@@ -1,5 +1,5 @@
 import { Physics } from "@react-three/cannon";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Stars } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import React, { Suspense } from "react";
 // Mine
@@ -17,29 +17,31 @@ export default function Path() {
     // Utilizamos solamente el "useState" para volver a renderizar el componente y asi poder renderizar todos los elementos "MiddleBox" que queremos 
     // sacar de la funcion "map"
     const [update, updateState] = React.useState(0);
+    var cameraPosition;
 
     function CameraMove() {
         const { camera, mouse } = useThree();
         
-        // Cada vez que se dispare wheel, se usaran los valores y y position para que en cada frame se mueva la camara y de sensacion de scroll
-        window.addEventListener("wheel", onMouseWheel)
-        window.addEventListener("scroll", onMouseScroll)
+        var y = 0;
+        var position = 0;
         
-        let y = 0;
-        let position = 0;
-
         function onMouseWheel(e) {
             y = e.deltaY * 0.00001
+
         }
+        
+        // Cada vez que se dispare wheel, se usaran los valores y y position para que en cada frame se mueva la camara y de sensacion de scroll
+        window.addEventListener("wheel", onMouseWheel)
+        // window.addEventListener("scroll", onMouseScroll)
+        
+        
         
         // TODO Como calcular que se dispare una funcion cuando nos acercamos a unno de los objetos/elementos?ç
         // Podriamos estar checkeando en cada frame si la camara esta cerca o no del objeto, y si esta cerca, disparar una funcion.
         // Buscar bibliotecas ya escritas que tengan esta funcion.
         // o
-        // Podriamos contar cuantas veces se le ha dado scroll y llevar un contador. Si el contado esta entre alfa y beta, disparar una funcion. 
-        function onMouseScroll(e) {
-            console.log('lunes')
-        }
+        // GSAP, scrolltrigger
+        
         
         useFrame(() => {
             // 
@@ -49,6 +51,12 @@ export default function Path() {
             camera.position.x = pos.x
             camera.position.y = pos.y
             camera.position.z = pos.z
+            
+            const posLookAt = KnotCurvePosition(position *1.3)
+
+            camera.lookAt(posLookAt)
+            // TODO monitorear posicion de la camara y actualizar la rotacion de los cubos
+            // cameraPosition = camera.position;
         })
     }
     
@@ -64,6 +72,7 @@ export default function Path() {
             boxPosition.push(posit)
         }
     }
+    
     createBoxes();
     setTimeout(()=>{updateState(1)} , 100)
 
@@ -79,7 +88,7 @@ export default function Path() {
                             // TODO Hay que volver a renderizar para que salgan los demas cubos
                             {boxPosition && boxPosition.map((po, i)=>{
                                 console.log(po)
-                                return (<MiddleBox key={i} po={po} />)
+                                return (<MiddleBox key={i} po={po} cameraPosition={cameraPosition}/>)
                             })}
                         </group>
                     </Physics>
@@ -92,7 +101,7 @@ export default function Path() {
                     <color attach="background" args={["#a64141"]} />
                     <Lights />
                     <fog attach="fog" args={["#94ebd8", 0, 100]} />
-                    {/* <Stars
+                    <Stars
                         radius={1}
                         depth={50}
                         count={500}
@@ -101,7 +110,7 @@ export default function Path() {
                         fade
                         speed={1}
                         color={3}
-                        /> */}
+                        />
                 </Canvas>
             </div>
         </div>

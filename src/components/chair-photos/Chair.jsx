@@ -1,4 +1,4 @@
-import { Scroll, ScrollControls, useScroll, OrbitControls, Stars } from "@react-three/drei";
+import { Scroll, ScrollControls, useScroll, OrbitControls, Stars, Sky } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import React, { useRef, Suspense } from "react";
 
@@ -8,7 +8,7 @@ import { Lights } from "../light/Lights";
 
 function Foo(props) {
   const ref = useRef()
-  
+
   const data = useScroll()
   useFrame(() => {
     // data.offset = current scroll position, between 0 and 1, dampened
@@ -52,7 +52,8 @@ const Chair = () => {
             <color attach="background" args={["#376bb0"]}></color>
             <Lights />
             <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} />
-            <Stars
+            <Sky distance={450000} sunPosition={[0, 1, 0]} inclination={0} azimuth={0.25} />
+            {/* <Stars
               radius={.5}
               depth={30}
               count={5000}
@@ -61,13 +62,13 @@ const Chair = () => {
               fade
               speed={1}
               color={31}
-            />
-            
+            /> */}
+
             <Suspense fallback={null}>
               <Model url="chair/armchairYellow.gltf" position={[0, -2, 0]} />
             </Suspense>
             <ScrollControls // permite tener un SCROLL estandar WEB en un Canvas 3D
-              pages={3} 
+              pages={1.5}
               distance={1} // A factor that increases scroll bar travel (default: 1)
               damping={4} // Friction, higher is faster (default: 4)
               horizontal={false} // Can also scroll horizontally (default: false)
@@ -80,9 +81,22 @@ const Chair = () => {
               </Scroll>
               <Scroll html>
                 <div className="col-md-5 p-5">
-                  <h3 style={{color: 'white'}} >CHAIR</h3>
-                  <br/>
+                  <h3 style={{ color: 'white' }} >CHAIR</h3>
+                  <br />
                   <h4 style={{ color: 'white' }}>Solo los mas atrevidos podran sentarse en esta silla</h4>
+                  <span style={{ color: 'white'}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed dolore, et laborum enim tempora eos. Ex adipisci dolor atque dolorem sequi nemo odio, impedit eum ipsa reiciendis placeat error.Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed dolore, et laborum enim tempora eos. Ex adipisci dolor atque dolorem sequi nemo odio, impedit eum ipsa reiciendis placeat error.</span>
+                  <br />
+                  <br />
+                  <br />
+                  <span style={{ color: 'white' }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed dolore, et laborum enim tempora eos. Ex adipisci dolor atque dolorem sequi nemo odio, impedit eum ipsa reiciendis placeat error.Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed dolore, et laborum enim tempora eos. Ex adipisci dolor atque dolorem sequi nemo odio, impedit eum ipsa reiciendis placeat error.</span>
+                  <br />
+                  <br />
+                  <br />
+                  <span style={{ color: 'white' }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed dolore, et laborum enim tempora eos. Ex adipisci dolor atque dolorem sequi nemo odio, impedit eum ipsa reiciendis placeat error.Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed dolore, et laborum enim tempora eos. Ex adipisci dolor atque dolorem sequi nemo odio, impedit eum ipsa reiciendis placeat error.</span>
+                  <br />
+                  <br />
+                  <br />
+                  <span style={{ color: 'white' }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed dolore, et laborum enim tempora eos. Ex adipisci dolor atque dolorem sequi nemo odio, impedit eum ipsa reiciendis placeat error.Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed dolore, et laborum enim tempora eos. Ex adipisci dolor atque dolorem sequi nemo odio, impedit eum ipsa reiciendis placeat error.</span>
                 </div>
               </Scroll>
             </ScrollControls>
