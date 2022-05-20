@@ -96,6 +96,10 @@ p {
   margin-left: 300px;
 }
 
+.tittles {
+  margin-top: 700px;
+}
+
 .my-canvas {
   position: fixed;
   z-index: -1;
@@ -115,4 +119,24 @@ p {
 .entrar {
   height: 30vh;
   background-color: beige;
+}
+
+.barra-fixed {
+  position: sticky;
+}
+
+.fixed-bar {
+  position: fixed;
+}
+
+.nav-margins {
+  margin-left: 50px;
+}
+
+.white-text {
+  color: antiquewhite;
+}
+
+.black-text {
+  color: black;
 }

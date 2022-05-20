@@ -1,4 +1,4 @@
-import "bootswatch/dist/pulse/bootstrap.min.css";
+import "bootswatch/dist/cyborg/bootstrap.min.css";
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import VideoList from "./Videos/VideoList";
@@ -13,8 +13,12 @@ import Path from "./components/pathScroll/Path";
 import Gsap from "./components/gsap/GSAP";
 import Main from "./components/main/Main";
 
-
-
+// https://stackoverflow.com/questions/12936953/chrome-extension-onmessage-addlistener-cannot-read-property-onmessage-of-undef
+// addEventListener('message', function (event) {
+//   if (event.data && event.data.extensionMessage) {
+//     alert(event.data.extensionMessage);
+//   }
+// });
 
 
 const App = () => {
@@ -22,6 +26,7 @@ const App = () => {
     <React.StrictMode>
       <BrowserRouter>
         {/* <Fragment> */}
+        
         <Navbar />
 
         <UtilsContextProvider>

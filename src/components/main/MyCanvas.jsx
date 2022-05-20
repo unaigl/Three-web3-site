@@ -1,6 +1,6 @@
-import { Scroll, ScrollControls, OrbitControls, Cloud, Html } from "@react-three/drei";
+import { Scroll, ScrollControls, OrbitControls, Cloud, Html, TransformControls, Sky } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, useTransition, useContext, useState, useRef } from "react";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,62 +12,43 @@ import { Lights } from "../light/Lights";
 import TextureGSAP from "../context/TextureGSAP";  
 import {ModelChair} from "./ModelChair";
 import AnimationGsap from "./AnimationGsap";
+import HtmlCanvas from "./HtmlCanvas";
+import { utilsContext } from '../context/Context';
 
 
 
 // Recorrido de "camera" en el eje "y" en base a scroll. Sin fisicas.
 
-export default function MyCanvas() {
-
-    const modelChairObject = ModelChair("chair/armchairYellow.gltf");
-    // function ChairMove(props) {
-
-    //     // const { camera } = useThree();
-    //     window.addEventListener("wheel", onMouseWheel)
-    //     function onMouseWheel(e) {
-    //         // console.log()
-    //     }
-    //     useFrame(() => {
-            
-    //         modelChairObject.rotation.x += 0.01;
-    //     });
-    //     const childrenArray = React.Children.toArray(props.children)
-    //     return <group >{childrenArray}</group>;
-    // }
+export default function MyCanvas(props) {
     
-    const entrar = document.getElementById("entrar")
+    const modelChairObject = ModelChair("chair/armchairYellow.gltf");
     
     useEffect(() => {
-    
-        const a = {b:0}
         gsap.fromTo(modelChairObject.position, 
             {
-                // TODO revisar mas propiedades para que no vaya atronpicones
                 z: -40
             },
             {
                 z: 40,
                 scrollTrigger:{
                     // TODO cambiar trigger
-                    trigger: entrar,
+                    // trigger: entrar,
                     start: "400 200px",
                     end: "+=1800px",
                     scrub: 5,
                     markers: true,
                     onUpdate: function(self) {
-                        console.log(self.progress)
-                        // modelChairObject.rotation.x = 2. * 3.14 * self.progress / 2;
-                        // TODO falla al echar para atras
+                        modelChairObject.rotation.x = 2. * 3.14 * self.progress / 2;
                         // modelChairObject.position.z = 2. * Math.sin(3.14 * self.progress )* 2;
-                        // para ver
-                        // modelChairObject.position.y = 2. * 3.14 * self.progress * -0.1;
-                        // console.log(modelChairObject.position)
+                        modelChairObject.position.y = 10 + (2. * 3.14 * self.progress * 2 );
+                        // modelChairObject.position.z = 2. * 3.14 * self.progress * -1 ;
+                        
                     }
                 },
                 
-        })
+        });
+        
     }, [])
-    
     
     // COMPONENT
     // TODO se podran meter componentes de react dentro del componente de Ktml de "drei" ??? o sino, funciones que usen componentes
@@ -79,41 +60,36 @@ export default function MyCanvas() {
     return (
         <div className="row">
             <div className="col-md-12 main" >
-                <Canvas
-                    camera={{ position: [0, 0, 15], rotation: [0, 0, 0] }} className="my-canvas"
-                >
-                    {/* <ChairMove /> */}
-                    <Suspense fallback={null}>
-                        <primitive
-                            scale={0.05}
-                            object={modelChairObject}
-                            dispose={null}
-                            position={[0, 1, -6]}
-                        />
-                        <Html
-                            fullscreen
-                            // prepend
-                            // center
-                            // zIndexRange={[0, 0]}
-                            // transform
-                            // sprite
 
-                        >
-                            <h1 className="parrafos">hello</h1>
-                            <h1 className="parrafos">hello</h1>
-                        </Html>
-                    </Suspense>
-                    <OrbitControls enableZoom={false} enablePan={true} enableRotate={true} />
-                    <color attach="background" args={["#a64141"]} />
+                <Canvas
+                    camera={{ position: [0, 0, 15], rotation: [0, 0, 0] }} /* className="my-canvas" */
+                    >
+                        
+                    <Sky distance={450000} sunPosition={[0, props.light.isLightSky, 0]} inclination={0} azimuth={0.25} />
+                    <OrbitControls rotateSpeed={0.1} enableZoom={false} enablePan={false} enableRotate={props.rotationEnable.isRotationEnable} />
+
+                    <primitive
+                        scale={0.05}
+                        object={modelChairObject}
+                        dispose={null}
+                        position={[0, 10, -40]}
+                        />
+                    {/* <TransformControls mode="translate">
+                        <mesh>
+                        <boxGeometry args={[1, 1, 1]} />
+                        </mesh>
+                    </TransformControls> */}
+                    
+                    <HtmlCanvas setRotation={props.setRotation} light={props.light} position={modelChairObject.position}/>
+                    {/* <color attach="background" args={["#a64141"]} /> */}
                     <Lights />
-                    {/* <Cloud
+                    <Cloud
                         opacity={0.7}
                         speed={0.2} // Rotation speed
                         width={20} // Width of the full cloud
                         depth={1.5} // Z-dir depth
-                        segments={30} // Number of particles
-                    /> */}
-                    
+                        segments={10} // Number of particles
+                        />
                 </Canvas>
             </div>
         </div>
@@ -121,29 +97,6 @@ export default function MyCanvas() {
 }
 
 {/* <AnimationGsap /> */ }
-
-
-{/* <Html
-  as='div' // Wrapping element (default: 'div')
-  wrapperClass // The className of the wrapping element (default: undefined)
-  prepend // Project content behind the canvas (default: false)
-  center // Adds a -50%/-50% css transform (default: false) [ignored in transform mode]
-  fullscreen // Aligns to the upper-left corner, fills the screen (default:false) [ignored in transform mode]
-  distanceFactor={10} // If set (default: undefined), children will be scaled by this factor, and also by distance to a PerspectiveCamera / zoom by a OrthographicCamera.
-  zIndexRange={[100, 0]} // Z-order range (default=[16777271, 0])
-  portal={domnodeRef} // Reference to target container (default=undefined)
-  transform // If true, applies matrix3d transformations (default=false)
-  sprite // Renders as sprite, but only in transform mode (default=false)
-  calculatePosition={(el: Object3D, camera: Camera, size: { width: number; height: number }) => number[]} // Override default positioning function. (default=undefined) [ignored in transform mode]
-  occlude={[ref]} // Can be true or a Ref<Object3D>[], true occludes the entire scene (default: undefined)
-  onOcclude={(visible) => null} // Callback when the visibility changes (default: undefined)
-  {...groupProps} // All THREE.Group props are valid
-  {...divProps} // All HTMLDivElement props are valid
->
-  <h1>hello</h1>
-  <p>world</p>
-</Html> */}
-
 
 {/* <Cloud
                         opacity={0.5}
@@ -165,3 +118,16 @@ export default function MyCanvas() {
                             <div className="marco"></div>
                         </Scroll>
                     </ScrollControls> */}
+                    
+                    
+// const [update, setUpdate] = React.useState(0);
+
+// setTimeout(() => {
+//     setUpdate(1)
+// }, 500);
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     if (!getCookie('Popup')) {
+//         entrar = document.getElementById("entrar")
+//     }
+// });

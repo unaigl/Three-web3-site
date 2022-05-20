@@ -19,11 +19,13 @@ const Navbar = () => {
     return library;
   };
 
+  // TODO El nav se queda fijado hasta que baja al canvas
+  
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{ height: '60px' }}>
       <div className="container">
-        <div className="row">
-          <div className="nav-details">
+        <div className="row nav-margins">
+          <div className="col-md-12 text-center" /* style={{position: 'absolute', overflow: 'hidden'}} */>
 
             <Link className="navbar-brand" to="/game">
               GAME
@@ -42,11 +44,11 @@ const Navbar = () => {
             </Link>
 
 
-          </div>
-          <div className="nav-brand" >
+            <div className="nav-brand" style={{display: 'inline'}} >
             <Link className="navbar-brand my-text" to="/main">
               MAIN
             </Link>
+          </div>
           </div>
 
         </div>
