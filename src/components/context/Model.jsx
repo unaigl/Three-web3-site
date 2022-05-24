@@ -1,4 +1,4 @@
-import { useGLTF } from '@react-three/drei';
+import {useGLTF} from '@react-three/drei';
 
 export function Model(props) {
 	const gltf = useGLTF(props.url, '/draco-gltf');

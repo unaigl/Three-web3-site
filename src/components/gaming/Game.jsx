@@ -62,8 +62,7 @@ export default function Game() {
 						position: [0, 0, 3000],
 						fov: 90,
 						rotation: [0, 0, 0],
-					}}
-				>
+					}}>
 					{/* <Html fullscreen>
             LET GO
           </Html> */}

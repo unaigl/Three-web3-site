@@ -1,10 +1,10 @@
-import { Physics } from '@react-three/cannon';
-import { OrbitControls, Stars } from '@react-three/drei';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import React, { Suspense } from 'react';
+import {Physics} from '@react-three/cannon';
+import {OrbitControls, Stars} from '@react-three/drei';
+import {Canvas, useFrame, useThree} from '@react-three/fiber';
+import React, {Suspense} from 'react';
 // Mine
 import '../App.css';
-import { Lights } from '../light/Lights';
+import {Lights} from '../light/Lights';
 import KnotCurvePosition from './KnotCurvePosition';
 // import Texture from "../context/Texture";
 import MiddleBox from './MiddleBox';
@@ -18,7 +18,7 @@ export default function Path() {
 	let cameraPosition;
 
 	function CameraMove() {
-		const { camera, mouse } = useThree();
+		const {camera, mouse} = useThree();
 
 		let y = 0;
 		let position = 0;
@@ -75,7 +75,7 @@ export default function Path() {
 	return (
 		<div className='row'>
 			<div className='col-md-12 my-screen'>
-				<Canvas camera={{ position: positionCamera }}>
+				<Canvas camera={{position: positionCamera}}>
 					<CameraMove />
 					<Physics>
 						<group>

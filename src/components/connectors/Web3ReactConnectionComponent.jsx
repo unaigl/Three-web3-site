@@ -105,8 +105,7 @@ const Web3ReactConnectionComponent = () => {
 			<li className='nav-item'>
 				<button
 					className='nav-link'
-					onClick={writeToContractUsingWeb3React}
-				>
+					onClick={writeToContractUsingWeb3React}>
 					Write
 				</button>
 			</li>
@@ -118,8 +117,7 @@ const Web3ReactConnectionComponent = () => {
 			<li className='nav-item'>
 				<button
 					className='nav-link'
-					onClick={connectWalletConnectSimple}
-				>
+					onClick={connectWalletConnectSimple}>
 					WalletConnect
 				</button>
 			</li>

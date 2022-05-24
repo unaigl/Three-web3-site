@@ -29,8 +29,7 @@ export default function SwitchOptions() {
 							<legend className='mt-3 p-1 '>
 								<div
 									className='form-check form-switch'
-									style={{display: 'inline-flex'}}
-								>
+									style={{display: 'inline-flex'}}>
 									<input
 										onClick={enableRotation}
 										className='form-check-input'
@@ -47,8 +46,7 @@ export default function SwitchOptions() {
 									style={{
 										display: 'inline-flex',
 										color: 'gray',
-									}}
-								>
+									}}>
 									Camera rotation
 								</h5>
 							</legend>
@@ -61,8 +59,7 @@ export default function SwitchOptions() {
 									display: 'inline-flex',
 									margin: '20px',
 									width: '140px',
-								}}
-							>
+								}}>
 								RESET
 							</button>
 
@@ -78,8 +75,7 @@ export default function SwitchOptions() {
 									display: 'inline-flex',
 									margin: '20px',
 									width: '140px',
-								}}
-							>
+								}}>
 								{utils.light.isLightSky ? 'Dark' : 'Light'}
 							</button>
 						</fieldset>

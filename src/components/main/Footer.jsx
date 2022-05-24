@@ -16,8 +16,7 @@ export default function Footer() {
 							onClick={scrollTo}
 							type='button'
 							className='btn btn-outline-dark btn-lg'
-							style={{display: 'inline-flex', margin: '20px'}}
-						>
+							style={{display: 'inline-flex', margin: '20px'}}>
 							⇑
 						</button>
 					</div>

@@ -22,8 +22,7 @@ const Navbar = () => {
 	return (
 		<nav
 			className='navbar navbar-expand-lg navbar-light bg-light'
-			style={{height: '60px'}}
-		>
+			style={{height: '60px'}}>
 			<div className='container'>
 				<div className='row nav-margins'>
 					<div className='col-md-12 text-center'>

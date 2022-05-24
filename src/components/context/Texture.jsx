@@ -28,8 +28,7 @@ const Texture = () => {
 						<Plane
 							key={index}
 							args={[1, 1]}
-							position={[0, -1.5 * index, -2]}
-						>
+							position={[0, -1.5 * index, -2]}>
 							<meshMatcapMaterial matcap={photo} />
 						</Plane>
 					);
@@ -40,8 +39,7 @@ const Texture = () => {
 						<Plane
 							key={index}
 							args={[1, 1]}
-							position={[3, -1.5 * index, -4]}
-						>
+							position={[3, -1.5 * index, -4]}>
 							<meshMatcapMaterial matcap={photo} />
 						</Plane>
 					);

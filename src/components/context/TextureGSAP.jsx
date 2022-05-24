@@ -1,8 +1,8 @@
-import { Plane, useTexture } from '@react-three/drei';
-import { extend } from '@react-three/fiber';
-import { useRef, useEffect } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {Plane, useTexture} from '@react-three/drei';
+import {extend} from '@react-three/fiber';
+import {useRef, useEffect} from 'react';
+import {gsap} from 'gsap';
+import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import * as THREE from 'three';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -69,7 +69,7 @@ const TextureGSAP = () => {
 		for (let i = 0; i < photos.length; i++) {
 			imgs.push(refs[i].current);
 		}
-		const a = { b: 0 };
+		const a = {b: 0};
 		gsap.fromTo(
 			// Especifica sobre que elemento se modificaran sus valores
 			oneClass,
@@ -116,8 +116,7 @@ const TextureGSAP = () => {
 							args={[1, 1]}
 							position={[0, -1.5 * index, -3]}
 							ref={refs[index]}
-							key={index}
-						>
+							key={index}>
 							<meshMatcapMaterial
 								matcap={photo}
 								key={index}

@@ -1,5 +1,5 @@
 import 'bootswatch/dist/cyborg/bootstrap.min.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Chair from './components/chair-photos/Chair';
 import Photos from './components/chair-photos/Photos';
 import Game from './components/gaming/Game';
@@ -10,7 +10,7 @@ import Main from './components/main/Main';
 // import App from "./App";
 import Navbar from './components/navbar/Navbar';
 import Path from './components/pathScroll/Path';
-import React from 'react'
+import React from 'react';
 
 // https://stackoverflow.com/questions/12936953/chrome-extension-onmessage-addlistener-cannot-read-property-onmessage-of-undef
 // addEventListener('message', function (event) {

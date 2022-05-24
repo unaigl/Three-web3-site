@@ -1,7 +1,7 @@
-import React, {Suspense} from 'react';
+import React, { Suspense } from 'react';
 // Mine
 import '../App.css';
-import {utilsContext, UtilsContextProvider} from '../context/Context';
+import { utilsContext, UtilsContextProvider } from '../context/Context';
 import Footer from './Footer';
 import MyCanvas from './MyCanvas';
 import SwitchOptions from './SwitchOptions';
@@ -61,16 +61,16 @@ export default function Main() {
 
 {
 	/* <utilsContext.Consumer>
-                    {(consumerValue) => {
-                        console.log('JUEVES')
-                        console.log(consumerValue.light)
-                        const light = consumerValue.light
-                        return (
-                            <React.Fragment>
-                            </React.Fragment>
-                        );
-                    }}
-                </utilsContext.Consumer> */
+					{(consumerValue) => {
+						console.log('JUEVES')
+						console.log(consumerValue.light)
+						const light = consumerValue.light
+						return (
+							<React.Fragment>
+							</React.Fragment>
+						);
+					}}
+				</utilsContext.Consumer> */
 }
 
 {
@@ -98,24 +98,24 @@ export default function Main() {
 
 {
 	/* <Cloud
-    opacity={0.5}
-    speed={0.1} // Rotation speed
-    width={15} // Width of the full cloud
-    depth={1.5} // Z-dir depth
-    segments={10} // Number of particles
+	opacity={0.5}
+	speed={0.1} // Rotation speed
+	width={15} // Width of the full cloud
+	depth={1.5} // Z-dir depth
+	segments={10} // Number of particles
 /> */
 }
 
 {
 	/* <ScrollControls // permite tener un SCROLL estandar WEB en un Canvas 3D
-    pages={3}
-    distance={1} // A factor that increases scroll bar travel (default: 1)
-    damping={4} // Friction, higher is faster (default: 4)
-    horizontal={false} // Can also scroll horizontally (default: false)
-    infinite={false} // Can also scroll infinitely (default: false)
+	pages={3}
+	distance={1} // A factor that increases scroll bar travel (default: 1)
+	damping={4} // Friction, higher is faster (default: 4)
+	horizontal={false} // Can also scroll horizontally (default: false)
+	infinite={false} // Can also scroll infinitely (default: false)
 >
-    <Scroll html>
-        <div className="marco"></div>
-    </Scroll>
+	<Scroll html>
+		<div className="marco"></div>
+	</Scroll>
 </ScrollControls> */
 }
