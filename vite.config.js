@@ -3,8 +3,8 @@
 // import summary from "rollup-plugin-summary";
 // import commonjs from "@rollup/plugin-commonjs";
 // import { terser } from "rollup-plugin-terser";
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import {defineConfig} from 'vite';
+import react from '@vitejs/plugin-react';
 
 // const babelConfig = {
 // 	plugins: [],
@@ -26,57 +26,57 @@ import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default () => {
-  return defineConfig({
-    plugins: [react()],
-    server: {
-      port: 3000,
-      watch: {
-        usePolling: true
-      }
-      // host: "0.0.0.0"
-    },
-    build: {
-      // target: "es2020",
-      // commonjsOptions: {
-      // 	sourceMap: false
-      // },
-      chunkSizeWarningLimit: 500,
-      // rollupOptions: {
-      //   input: [
-      //     "src/index.jsx",
-      //     "src/components/THREE/gaming/Game.jsx",
-      //     //   "src/components/THREE/controls",
-      //     //   "src/components/THREE/menu",
-      //   ],
-      //   output: {
-      //     format: "es",
-      //     strict: false,
-      //     chunkFileNames: `[name].[hash].js`,
-      //     entryFileNames: "[name].bundle.js",
-      //     dir: "dist",
-      //   },
-      // plugins: [
-      // Resolve bare module specifiers to relative paths
-      // resolve({
-      // 	browser: true
-      // }),
-      // commonjs({
-      // 	sourceMap: false
-      // }),
-      // babel config
-      // babel(babelConfig),
-      // Minify JS
-      // terser({
-      // 	format: {
-      // 		comments: false
-      // 	},
-      // 	compress: false,
-      // 	module: true
-      // }),
-      // Print bundle summary
-      // summary({})
-      // ]
-      // },
-    },
-  });
+	return defineConfig({
+		plugins: [react()],
+		server: {
+			port: 3000,
+			watch: {
+				usePolling: true,
+			},
+			// host: "0.0.0.0"
+		},
+		build: {
+			// target: "es2020",
+			// commonjsOptions: {
+			// 	sourceMap: false
+			// },
+			chunkSizeWarningLimit: 500,
+			// rollupOptions: {
+			//   input: [
+			//     "src/index.jsx",
+			//     "src/components/THREE/gaming/Game.jsx",
+			//     //   "src/components/THREE/controls",
+			//     //   "src/components/THREE/menu",
+			//   ],
+			//   output: {
+			//     format: "es",
+			//     strict: false,
+			//     chunkFileNames: `[name].[hash].js`,
+			//     entryFileNames: "[name].bundle.js",
+			//     dir: "dist",
+			//   },
+			// plugins: [
+			// Resolve bare module specifiers to relative paths
+			// resolve({
+			// 	browser: true
+			// }),
+			// commonjs({
+			// 	sourceMap: false
+			// }),
+			// babel config
+			// babel(babelConfig),
+			// Minify JS
+			// terser({
+			// 	format: {
+			// 		comments: false
+			// 	},
+			// 	compress: false,
+			// 	module: true
+			// }),
+			// Print bundle summary
+			// summary({})
+			// ]
+			// },
+		},
+	});
 };

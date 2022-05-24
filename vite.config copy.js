@@ -1,27 +1,27 @@
 // https://github.com/vitejs/vite/issues/6860
-import { RollupBabelInputPluginOptions, babel } from "@rollup/plugin-babel";
-import resolve from "@rollup/plugin-node-resolve";
-import summary from "rollup-plugin-summary";
-import commonjs from "@rollup/plugin-commonjs";
-import { terser } from "rollup-plugin-terser";
-import { defineConfig } from "vite";
+import {RollupBabelInputPluginOptions, babel} from '@rollup/plugin-babel';
+import resolve from '@rollup/plugin-node-resolve';
+import summary from 'rollup-plugin-summary';
+import commonjs from '@rollup/plugin-commonjs';
+import {terser} from 'rollup-plugin-terser';
+import {defineConfig} from 'vite';
 
-const babelConfig/* : RollupBabelInputPluginOptions */ = {
+const babelConfig /* : RollupBabelInputPluginOptions */ = {
 	plugins: [],
-	exclude: "node_modules/**",
+	exclude: 'node_modules/**',
 	babelrc: false,
 	presets: [
 		[
-			"@babel/preset-env",
+			'@babel/preset-env',
 			{
 				targets: {
-					browsers: "chrome >= 62"
+					browsers: 'chrome >= 62',
 				},
-				useBuiltIns: "usage",
-				corejs: "3"
-			}
-		]
-	]
+				useBuiltIns: 'usage',
+				corejs: '3',
+			},
+		],
+	],
 };
 
 // https://vitejs.dev/config/
@@ -29,47 +29,47 @@ export default (/* opts: { mode: "production" | "development"; command: "build" 
 	return defineConfig({
 		server: {
 			port: 9000,
-			host: "0.0.0.0"
+			host: '0.0.0.0',
 		},
 		plugins: [],
 		build: {
-			target: "es2020",
+			target: 'es2020',
 			commonjsOptions: {
-				sourceMap: false
+				sourceMap: false,
 			},
 			rollupOptions: {
 				input: {
-					index: "./src/index.js"
+					index: './src/index.js',
 				},
 				output: {
-					format: "umd",
+					format: 'umd',
 					strict: false,
-					chunkFileNames: `[name].[hash].js`,
-					entryFileNames: "[name].bundle.js",
-					dir: "dist"
+					chunkFileNames: '[name].[hash].js',
+					entryFileNames: '[name].bundle.js',
+					dir: 'dist',
 				},
 				plugins: [
 					// Resolve bare module specifiers to relative paths
 					resolve({
-						browser: true
+						browser: true,
 					}),
 					commonjs({
-						sourceMap: false
+						sourceMap: false,
 					}),
 					// babel config
 					babel(babelConfig),
 					// Minify JS
 					terser({
 						format: {
-							comments: false
+							comments: false,
 						},
 						compress: false,
-						module: true
+						module: true,
 					}),
 					// Print bundle summary
-					summary({})/*  as any */
-				]
-			}
-		}
+					summary({}) /*  as any */,
+				],
+			},
+		},
 	});
 };

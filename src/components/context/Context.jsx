@@ -1,42 +1,39 @@
-import { createContext } from "react";
-import React, {useState} from "react";
-import * as THREE from 'three'
+import React, {createContext, useState} from 'react';
+
+import * as THREE from 'three';
 
 // Para los hijos
 export const utilsContext = createContext({
-  // Se puede agregar defaultValues
+	// Se puede agregar defaultValues
 });
 
 // Para el padre
 export const UtilsContextProvider = (props) => {
-    
-  // const defaultRotation = new THREE.Euler(0, 0, 0)
-  
-  const [isRotationEnable, setisRotationEnable] = useState(false)
-  const [cameraRotation, setcameraRotation] = useState(false)
-  const [isLightSky, setisLightSky] = useState(true)
+	// const defaultRotation = new THREE.Euler(0, 0, 0)
 
-  
-  const childrenArray = React.Children.toArray(props.children)
-  
-  const utils = {
-    has: {
-      collide: false,
-    },
-    objetivePosition: {
-      x: 0,
-      y: 0,
-      z: 0,
-    },
-    rotationEnable: {isRotationEnable, setisRotationEnable},
-    setRotation: { cameraRotation, setcameraRotation},
-    light: {isLightSky, setisLightSky},
+	const [isRotationEnable, setisRotationEnable] = useState(false);
+	const [cameraRotation, setcameraRotation] = useState(false);
+	const [isLightSky, setisLightSky] = useState(true);
 
-  }
-    
-  return (
-    <utilsContext.Provider value={utils}>
-      {childrenArray}
-    </utilsContext.Provider>
-  );
+	const childrenArray = React.Children.toArray(props.children);
+
+	const utils = {
+		has: {
+			collide: false,
+		},
+		objetivePosition: {
+			x: 0,
+			y: 0,
+			z: 0,
+		},
+		rotationEnable: {isRotationEnable, setisRotationEnable},
+		setRotation: {cameraRotation, setcameraRotation},
+		light: {isLightSky, setisLightSky},
+	};
+
+	return (
+		<utilsContext.Provider value={utils}>
+			{childrenArray}
+		</utilsContext.Provider>
+	);
 };

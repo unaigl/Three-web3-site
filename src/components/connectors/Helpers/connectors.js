@@ -1,6 +1,6 @@
-import { InjectedConnector } from "@web3-react/injected-connector";
-import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
-import { WalletLinkConnector } from "@web3-react/walletlink-connector";
+import {InjectedConnector} from '@web3-react/injected-connector';
+import {WalletConnectConnector} from '@web3-react/walletconnect-connector';
+import {WalletLinkConnector} from '@web3-react/walletlink-connector';
 
 // Ropstein 3 https://speedy-nodes-nyc.moralis.io/ef66cc6d4d85140fd7994b1d/eth/ropsten
 // Rinkeby 4 https://speedy-nodes-nyc.moralis.io/ef66cc6d4d85140fd7994b1d/eth/rinkeby
@@ -13,45 +13,42 @@ import { WalletLinkConnector } from "@web3-react/walletlink-connector";
 // AVAX testnet 43113 https://speedy-nodes-nyc.moralis.io/ef66cc6d4d85140fd7994b1d/avalanche/testnet
 
 const RPC_URLS = {
-  // Tesnet
-  1: "https://mainnet.infura.io/v3/55d040fb60064deaa7acc8e320d99bd4",
-  4: "https://rinkeby.infura.io/v3/55d040fb60064deaa7acc8e320d99bd4",
-  97: "https://speedy-nodes-nyc.moralis.io/ef66cc6d4d85140fd7994b1d/bsc/testnet",
-  80001:
-    "https://speedy-nodes-nyc.moralis.io/ef66cc6d4d85140fd7994b1d/polygon/mumbai",
-  43113:
-    "https://speedy-nodes-nyc.moralis.io/ef66cc6d4d85140fd7994b1d/avalanche/testnet",
+	// Tesnet
+	1: 'https://mainnet.infura.io/v3/55d040fb60064deaa7acc8e320d99bd4',
+	4: 'https://rinkeby.infura.io/v3/55d040fb60064deaa7acc8e320d99bd4',
+	97: 'https://speedy-nodes-nyc.moralis.io/ef66cc6d4d85140fd7994b1d/bsc/testnet',
+	80001: 'https://speedy-nodes-nyc.moralis.io/ef66cc6d4d85140fd7994b1d/polygon/mumbai',
+	43113: 'https://speedy-nodes-nyc.moralis.io/ef66cc6d4d85140fd7994b1d/avalanche/testnet',
 
-  // Mainet
-  56: "https://speedy-nodes-nyc.moralis.io/ef66cc6d4d85140fd7994b1d/bsc/mainnet",
-  137: "https://speedy-nodes-nyc.moralis.io/ef66cc6d4d85140fd7994b1d/polygon/mainnet",
-  43114:
-    "https://speedy-nodes-nyc.moralis.io/ef66cc6d4d85140fd7994b1d/avalanche/mainnet",
+	// Mainet
+	56: 'https://speedy-nodes-nyc.moralis.io/ef66cc6d4d85140fd7994b1d/bsc/mainnet',
+	137: 'https://speedy-nodes-nyc.moralis.io/ef66cc6d4d85140fd7994b1d/polygon/mainnet',
+	43114: 'https://speedy-nodes-nyc.moralis.io/ef66cc6d4d85140fd7994b1d/avalanche/mainnet',
 };
 
-//metamask
+// metamask
 export const injected = new InjectedConnector({
-  supportedChainIds: [1, 3, 4, 5, 42],
+	supportedChainIds: [1, 3, 4, 5, 42],
 });
 
 export const walletconnect = new WalletConnectConnector({
-  rpc: {
-    1: RPC_URLS[1],
-    4: RPC_URLS[4],
-  },
-  qrcode: true,
-  pollingInterval: 15000,
+	rpc: {
+		1: RPC_URLS[1],
+		4: RPC_URLS[4],
+	},
+	qrcode: true,
+	pollingInterval: 15000,
 });
 
 export function resetWalletConnector(connector) {
-  if (connector && connector instanceof WalletConnectConnector) {
-    connector.walletConnectProvider = undefined;
-  }
+	if (connector && connector instanceof WalletConnectConnector) {
+		connector.walletConnectProvider = undefined;
+	}
 }
 
-//coinbase
+// coinbase
 export const walletlink = new WalletLinkConnector({
-  url: RPC_URLS[4],
-  appName: "demo-app",
-  supportedChainIds: [1, 4],
+	url: RPC_URLS[4],
+	appName: 'demo-app',
+	supportedChainIds: [1, 4],
 });

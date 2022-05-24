@@ -11,22 +11,21 @@ gsap.registerPlugin(ScrollTrigger);
 ///
 
 // movemos el elemento con la className ".c", utilizando "toggleActions", el movimiento y la duracion.
-gsap.to(".c", {
-
-    scrollTrigger: {
-        trigger: ".c",
-        start: "top center",
-        endTrigger: ".c",
-        // end: "bottom center",
-        // end: "+=300"
-        end: () => "+=" + window.innerHeight / 5,
-        // end: () => "+=" + window.document.querySelector(".c").offsetHeight,
-        markers: true,
-        toggleActions: "play pause reverse pause"
-    },
-    x: 400,
-    rotation: 360,
-    duration: 5
+gsap.to('.c', {
+	scrollTrigger: {
+		trigger: '.c',
+		start: 'top center',
+		endTrigger: '.c',
+		// end: "bottom center",
+		// end: "+=300"
+		end: () => '+=' + window.innerHeight / 5,
+		// end: () => "+=" + window.document.querySelector(".c").offsetHeight,
+		markers: true,
+		toggleActions: 'play pause reverse pause',
+	},
+	x: 400,
+	rotation: 360,
+	duration: 5,
 });
 // Si quitamos "toggleActions", simplemente se ejecuta el movimiento en la duracion deseada (cuando el start del objeto y el viewport coincidan).
 
@@ -38,17 +37,15 @@ gsap.to(".c", {
 
 gsap.registerPlugin(ScrollTrigger);
 
-gsap.to(".c", {
-
-    scrollTrigger: {
-        trigger: ".c",
-        start: "-100 center",
-        endTrigger: ".c",
-        end: () => "+=" + window.innerHeight / 3,
-        markers: true,
-        scrub: 2
-
-    },
-    x: 400,
-    rotation: 720,
+gsap.to('.c', {
+	scrollTrigger: {
+		trigger: '.c',
+		start: '-100 center',
+		endTrigger: '.c',
+		end: () => '+=' + window.innerHeight / 3,
+		markers: true,
+		scrub: 2,
+	},
+	x: 400,
+	rotation: 720,
 });

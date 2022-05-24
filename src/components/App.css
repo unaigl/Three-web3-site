@@ -1,142 +1,142 @@
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+	height: 40vmin;
+	pointer-events: none;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
 }
 
 button {
-  font-size: calc(10px + 2vmin);
+	font-size: calc(10px + 2vmin);
 }
 
 .box {
-  border: solid 5px;
+	border: solid 5px;
 }
 
 .text-box {
-  font-size: 1rem;
-  /* text-align: left; */
-  /* width: 15vw; */
-  width: 300%;
-  /* margin: 10 auto; */
-  color: rgb(42, 34, 201);
-  top:0;
-  border: solid white 3px;
-  background-color: rgba(75, 152, 234, 0.326);
+	font-size: 1rem;
+	/* text-align: left; */
+	/* width: 15vw; */
+	width: 300%;
+	/* margin: 10 auto; */
+	color: rgb(42, 34, 201);
+	top: 0;
+	border: solid white 3px;
+	background-color: rgba(75, 152, 234, 0.326);
 }
 
 .text-box-win {
-  font-size: 1rem;
-  color: rgba(255, 255, 255);
+	font-size: 1rem;
+	color: rgba(255, 255, 255);
 }
 
 p {
-  font-size: 1rem;
-  color: rgba(255, 255, 255);
+	font-size: 1rem;
+	color: rgba(255, 255, 255);
 }
 
-.text-play{
-  font-size: 1rem bold;
-  color: rgb(255, 255, 255);
+.text-play {
+	font-size: 1rem bold;
+	color: rgb(255, 255, 255);
 }
 
 .marco {
-  border: solid white 3px;
-  background-color: rgba(246, 220, 127, 0.326);
-  width: 20vw;
-  height: 50vh;
-  display: absolute;
+	border: solid white 3px;
+	background-color: rgba(246, 220, 127, 0.326);
+	width: 20vw;
+	height: 50vh;
+	display: absolute;
 }
 .marcoPolo {
-  border: solid white 3px;
-  background-color: rgba(246, 220, 127, 0.326);
-  width: 20vw;
-  height: 50vh;
+	border: solid white 3px;
+	background-color: rgba(246, 220, 127, 0.326);
+	width: 20vw;
+	height: 50vh;
 }
 
 .nav-details {
-  line-height: 60px;
-  display: inline;
+	line-height: 60px;
+	display: inline;
 }
 
 .my-text {
-  font-size: 30px;
+	font-size: 30px;
 }
 
 .my-screen {
-  height: 85vh;
-  /* border: 50px solid #61dafb; */
+	height: 85vh;
+	/* border: 50px solid #61dafb; */
 }
 
 .main {
-  height: 200vh;
-  /* overflow: auto; */
+	height: 200vh;
+	/* overflow: auto; */
 }
 
 .parrafos {
-  font-size: 5rem;
-  color: rgba(255, 255, 255);
-  margin-left: 300px;
+	font-size: 5rem;
+	color: rgba(255, 255, 255);
+	margin-left: 300px;
 }
 
 .tittles {
-  margin-top: 700px;
+	margin-top: 700px;
 }
 
 .my-canvas {
-  position: fixed;
-  z-index: -1;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 200vh;
+	position: fixed;
+	z-index: -1;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 200vh;
 }
 .adios {
-  font-size: 5rem;
-  color: rgb(15, 13, 13);
-  margin-left: 300px;
-  height: 30vh;
-  background-color: aliceblue;
+	font-size: 5rem;
+	color: rgb(15, 13, 13);
+	margin-left: 300px;
+	height: 30vh;
+	background-color: aliceblue;
 }
 
 .entrar {
-  height: 30vh;
-  background-color: beige;
+	height: 30vh;
+	background-color: beige;
 }
 
 .barra-fixed {
-  position: sticky;
+	position: sticky;
 }
 
 .fixed-bar {
-  position: fixed;
+	position: fixed;
 }
 
-.nav-margins {
+/* .nav-margins {
   margin-left: 50px;
-}
+} */
 
 .white-text {
-  color: antiquewhite;
+	color: antiquewhite;
 }
 
 .black-text {
-  color: black;
+	color: black;
 }
