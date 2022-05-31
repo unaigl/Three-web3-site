@@ -29,5 +29,6 @@ module.exports = {
 		'no-lone-blocks': 'warn',
 		// 'eollone-last': 'off',
 		'react/prop-types': 'warn',
+		'no-void': 'off',
 	},
 };

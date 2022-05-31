@@ -1,108 +1,68 @@
-import {Vector3} from 'three';
+import { Vector3 } from 'three';
 import Attackers from './Attackers';
+import PropTypes from 'prop-types';
+import { useFrame, useLoader } from '@react-three/fiber';
 
 const Spawner = (props) => {
 	// TODO No permite usar los valores de useContext fuera del componente Spawner. Y si esta dentro, no permite exportarlo
 
+	// Random number between
+	function randomIntBetween(min, max) { // min and max included 
+		return Math.floor(Math.random() * (max - min + 1) + min)
+	}
+
+
+	function randomIntBetweenAlsoNegatives(min, max) { // min and max included 
+		const math = Math.floor(Math.random() * (max - min + 1) + min)
+		const random = Math.random()
+		const zeroOrOne = Math.round(random)
+		if (zeroOrOne) return -(math)
+		return math
+	}
+
+
+
+	const attackersArray = [];
+
+	for (let i = 0; i < 20; i++) {
+		const att = [
+			new Vector3(
+				randomIntBetweenAlsoNegatives(0, 2),
+				randomIntBetweenAlsoNegatives(0, 2),
+				0),
+			randomIntBetween(1, 12) * 10
+		]
+		attackersArray.push(att)
+	}
+
+
+	// useFrame(() => {
+
+	// 	console.log(randomIntBetweenAlsoNegatives(0, 2))
+	// 	console.log(attackersArray)
+	// })
+
 	return (
 		<group>
-			<Attackers
-				pos={new Vector3(-2, 2, 0)}
-				wait={30}
-				color='orange'
-				setplay={props.setplay}
-				play={props.play}
-			/>
-			<Attackers
-				pos={new Vector3(0, 2, 0)}
-				wait={40}
-				color='orange'
-				setplay={props.setplay}
-				play={props.play}
-			/>
-			<Attackers
-				pos={new Vector3(2, 2, 0)}
-				wait={20}
-				color='orange'
-				setplay={props.setplay}
-				play={props.play}
-			/>
+			{attackersArray.map((attackers, key) => {
+				return <Attackers
+					key={key}
+					pos={attackers[0]}
+					wait={attackers[1]}
+					color={attackers[2]}
+					play={props.play}
+					texture={`../../../public/photos/${randomIntBetween(1, 16)}.jpg`}
 
-			<Attackers
-				pos={new Vector3(-2, 0, 0)}
-				wait={10}
-				color='orange'
-				setplay={props.setplay}
-				play={props.play}
-			/>
+				/>
+			})}
 
-			<Attackers
-				pos={new Vector3(0, 0, 0)}
-				wait={15}
-				color='yellow'
-				setplay={props.setplay}
-				play={props.play}
-			/>
-			<Attackers
-				pos={new Vector3(0, 0, 0)}
-				wait={30}
-				color='yellow'
-				setplay={props.setplay}
-				play={props.play}
-			/>
-			<Attackers
-				pos={new Vector3(0, 0, 0)}
-				wait={60}
-				color='yellow'
-				setplay={props.setplay}
-				play={props.play}
-			/>
-			<Attackers
-				pos={new Vector3(0, 0, 0)}
-				wait={90}
-				color='yellow'
-				setplay={props.setplay}
-				play={props.play}
-			/>
-			<Attackers
-				pos={new Vector3(0, 0, 0)}
-				wait={120}
-				color='yellow'
-				setplay={props.setplay}
-				play={props.play}
-			/>
 
-			<Attackers
-				pos={new Vector3(2, 0, 0)}
-				wait={50}
-				color='orange'
-				setplay={props.setplay}
-				play={props.play}
-			/>
-
-			<Attackers
-				pos={new Vector3(0, -2, 0)}
-				wait={70}
-				color='orange'
-				setplay={props.setplay}
-				play={props.play}
-			/>
-			<Attackers
-				pos={new Vector3(2, -2, 0)}
-				wait={80}
-				color='orange'
-				setplay={props.setplay}
-				play={props.play}
-			/>
-			<Attackers
-				pos={new Vector3(-2, -2, 0)}
-				wait={120}
-				color='orange'
-				setplay={props.setplay}
-				play={props.play}
-			/>
 		</group>
 	);
 };
+
+Spawner.propTypes = {
+	play: PropTypes.bool,
+}
 
 export default Spawner;

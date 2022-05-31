@@ -1,6 +1,6 @@
-import {useBox} from '@react-three/cannon';
-import {useFrame} from '@react-three/fiber';
-import {Dispatch, SetStateAction, useContext} from 'react';
+import { useBox, } from '@react-three/cannon';
+import { useFrame } from '@react-three/fiber';
+import PropTypes from 'prop-types'
 // import { UtilsGameContext } from "../context/GameContext";
 
 const PlayerBox = (props) => {
@@ -16,15 +16,16 @@ const PlayerBox = (props) => {
 		mass: 0,
 		type: 'Dynamic',
 		// position: [0, 0, 0],
-		args: [2, 2, 2],
+		args: [1, 1, 1],
 		collisionFilterGroup: 1,
 		// 1 PlayerBox 2 Objetive 3 BulletBox 4 Attackers
 		collisionFilterMask: 4,
 		onCollide: (e) => {
 			// if (e.collisionFilters.bodyFilterGroup == 4)
-			console.log('GAME OVER');
+			props.gameOver.setgameover(true)
+			window.scrollTo(0, 0.5 * window.innerHeight);
+			console.log(props.gameOver.gameover);
 			props.setplay(false);
-			// hasCollide
 		},
 	}));
 
@@ -35,10 +36,27 @@ const PlayerBox = (props) => {
 
 	return (
 		<mesh ref={ref}>
-			<boxBufferGeometry attach='geometry' args={[2, 2, 2]} />
+			<boxBufferGeometry attach='geometry' args={[1, 1, 1]} />
 			<meshStandardMaterial />
 		</mesh>
 	);
+};
+
+PlayerBox.propTypes = {
+	move: PropTypes.shape({
+		x: PropTypes.number,
+		y: PropTypes.number,
+		z: PropTypes.number,
+	}),
+	setplay: PropTypes.func,
+};
+
+PlayerBox.propTypes = {
+	gameOver: PropTypes.shape({
+		gameover: PropTypes.bool,
+		setgameover: PropTypes.func,
+	}),
+	setplay: PropTypes.func,
 };
 
 export default PlayerBox;

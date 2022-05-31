@@ -1,6 +1,16 @@
+import { useFrame } from '@react-three/fiber';
+import { useRef } from 'react'
+
 export const Lights = () => {
+
+	const ref = useRef();
+	useFrame(() => {
+		ref.current.rotation.z += 0.005
+	})
+
 	return (
-		<>
+		<group
+			ref={ref}>
 			{/* Ambient Light illuminates lights for all objects */}
 			<ambientLight intensity={0.3} />
 			{/* Diretion light */}
@@ -19,6 +29,6 @@ export const Lights = () => {
 			/>
 			{/* Spotlight Large overhead light */}
 			<spotLight intensity={1} position={[1000, 0, 0]} castShadow />
-		</>
+		</group>
 	);
 };

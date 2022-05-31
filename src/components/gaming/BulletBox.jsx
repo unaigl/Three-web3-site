@@ -1,25 +1,27 @@
-import {useBox} from '@react-three/cannon';
-import {useFrame} from '@react-three/fiber';
-import {useContext} from 'react';
+import { useSphere } from '@react-three/cannon';
+import { useFrame, useLoader } from '@react-three/fiber';
+import { TextureLoader } from 'three/src/loaders/TextureLoader'
+import PropTypes from 'prop-types';
+import { useState } from 'react'
+
 // import { UtilsGameContext } from "../context/GameContext";
 
 const BulletBox = (props) => {
 	// const utils = useContext(UtilsGameContext);
+	const [size, setsize] = useState(1)
+	const colorMap = useLoader(TextureLoader, '../../../public/photos/00.png')
 
-	const [ref, api] = useBox(() => ({
+	const [ref, api] = useSphere(() => ({
 		mass: 0,
 		position: [0, 0, 0],
 		type: 'Dynamic',
-		args: [2, 2, 2],
 		// 1 PlayerBox 2 Objetive 3 BulletBox 4 Attackers
 		collisionFilterGroup: 3,
 		// No te va a colisionar, sino que vas a colisionar contra el
 		collisionFilterMask: 2,
-		// isTrigger: true
+		isTrigger: true
 	}));
 
-	const defaultColor = 'blue';
-	// if(api.isTrigger) return defaultColor= "orange"
 
 	let isShoot = false;
 	let increase = 1.3;
@@ -32,24 +34,32 @@ const BulletBox = (props) => {
 		}
 	});
 
-	const shootBox = (props) => {
+	const shootBox = () => {
 		if (props.play) {
 			isShoot = true;
 			window.setTimeout(() => {
 				isShoot = false;
 				increase = 1.3;
 				api.position.set(0, 0, 0);
-				props.collide = false;
+				// props.collide = false;
 			}, 2000);
 		}
 	};
 
+	const SetBigger = () => {
+		if (!props.play) setsize(1.1)
+	}
+
 	return (
-		<mesh ref={ref} onClick={shootBox}>
-			<boxBufferGeometry attach='geometry' args={[2, 2, 2]} />
-			<meshStandardMaterial color={defaultColor} />
+		<mesh ref={ref} onClick={shootBox} onPointerEnter={SetBigger} onPointerOut={() => setsize(1)} >
+			<sphereGeometry attach='geometry' args={[size, 32, 32]} />
+			<meshStandardMaterial /* color={defaultColor} */ map={colorMap} />
 		</mesh>
 	);
+};
+
+BulletBox.propTypes = {
+	play: PropTypes.bool,
 };
 
 export default BulletBox;

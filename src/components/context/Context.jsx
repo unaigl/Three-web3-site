@@ -1,4 +1,4 @@
-import React, {createContext, useState} from 'react';
+import React, { createContext, useState } from 'react';
 
 import * as THREE from 'three';
 
@@ -18,17 +18,9 @@ export const UtilsContextProvider = (props) => {
 	const childrenArray = React.Children.toArray(props.children);
 
 	const utils = {
-		has: {
-			collide: false,
-		},
-		objetivePosition: {
-			x: 0,
-			y: 0,
-			z: 0,
-		},
-		rotationEnable: {isRotationEnable, setisRotationEnable},
-		setRotation: {cameraRotation, setcameraRotation},
-		light: {isLightSky, setisLightSky},
+		rotationEnable: { isRotationEnable, setisRotationEnable },
+		setRotation: { cameraRotation, setcameraRotation },
+		light: { isLightSky, setisLightSky },
 	};
 
 	return (

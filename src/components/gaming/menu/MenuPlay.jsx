@@ -1,44 +1,38 @@
-import {useBox} from '@react-three/cannon';
-import {useFrame} from '@react-three/fiber';
-import {useContext} from 'react';
-import {Html} from '@react-three/drei';
+import { usePlane } from '@react-three/cannon';
+import { useFrame, useLoader } from '@react-three/fiber';
+import { TextureLoader } from 'three/src/loaders/TextureLoader'
+import PropTypes from 'prop-types'
+
+
 
 const MenuPlay = (props) => {
-	const [ref, api] = useBox(() => ({
-		mass: 0,
-		position: [-6, 5, 0],
-		type: 'Dynamic',
-		args: [0.5, 0.5, 0.5],
-		// collisionFilterGroup: 3,
-		// // No te va a colisionar, sino que vas a colisionar contra el
-		// collisionFilterMask: 2,
-		// // isTrigger: true
+
+	const colorMap = useLoader(TextureLoader, '../../../public/photos/play.png')
+
+
+	const [ref] = usePlane(() => ({
+		position: [-20, 5, -5],
+		rotation: [90 * (-Math.PI / 2), 90, 0]
 	}));
 
-	const defaultColor = 'yellow';
-	// if(api.isTrigger) return defaultColor= "orange"
-
-	const isShoot = false;
-	let increase = 1.3;
-
-	useFrame(() => {
-		api.rotation.set(0 + 0.005, 0 + 0.01, 0);
-		if (isShoot) {
-			increase = increase * 1.1;
-			api.position.set(0, 0, 0 - 0.0005 * increase);
-		}
-	});
-
-	const playGame = (e) => {
-		props.setplay(true);
+	const playGame = () => {
+		props.arePlaying.setplay(true);
+		props.gameOver.setgameover(false);
+		props.hasWin.setWin(false);
 	};
 
 	return (
 		<mesh ref={ref} onClick={playGame}>
-			<boxBufferGeometry attach='geometry' args={[0.5, 0.5, 0.5]} />
-			<meshStandardMaterial color={defaultColor} />
+			<planeGeometry args={[1, 1]} />
+			<meshStandardMaterial map={colorMap} />
 		</mesh>
 	);
+};
+
+MenuPlay.propTypes = {
+	arePlaying: PropTypes.object.isRequired,
+	gameOver: PropTypes.object.isRequired,
+	hasWin: PropTypes.object.isRequired,
 };
 
 export default MenuPlay;

@@ -1,26 +1,36 @@
-import {useBox} from '@react-three/cannon';
+import { usePlane } from '@react-three/cannon';
+import { useLoader } from '@react-three/fiber';
+import PropTypes from 'prop-types';
+import { TextureLoader } from 'three/src/loaders/TextureLoader';
 
 const MenuPause = (props) => {
-	const [ref, api] = useBox(() => ({
-		mass: 0,
-		position: [-5, 5, 0],
-		type: 'Dynamic',
-		args: [0.5, 0.5, 0.5],
+	const colorMap = useLoader(TextureLoader, '../../../public/photos/pause.png')
+
+
+	const [ref] = usePlane(() => ({
+		position: [-17, 4.5, -5],
+		rotation: [90 * (-Math.PI / 2), 90, 0]
 	}));
 
-	const defaultColor = 'orange';
+	const playGame = () => {
+		props.arePlaying.setplay(false);
+		props.counter.setcounter(0)
 
-	const playGame = (e) => {
-		props.setplay(false);
-		// api.args[3, 3, 3]
 	};
 
 	return (
 		<mesh ref={ref} onClick={playGame}>
-			<boxBufferGeometry attach='geometry' args={[0.5, 0.5, 0.5]} />
-			<meshStandardMaterial color={defaultColor} />
+			<planeGeometry args={[1, 1]} />
+			<meshStandardMaterial map={colorMap} />
 		</mesh>
 	);
 };
 
+MenuPause.propTypes = {
+	counter: PropTypes.object.isRequired,
+	arePlaying: PropTypes.object.isRequired,
+};
+
 export default MenuPause;
+
+

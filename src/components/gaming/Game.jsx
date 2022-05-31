@@ -1,132 +1,118 @@
-import {Physics} from '@react-three/cannon';
-import {CameraShake, Html, OrbitControls, Stars} from '@react-three/drei';
-import {Canvas, useFrame, useThree} from '@react-three/fiber';
-import React, {useState} from 'react';
-import {Vector3} from 'three';
+import { Physics } from '@react-three/cannon';
+import { CameraShake, OrbitControls, Stars } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
+import { useState, Suspense, useRef } from 'react';
 // Mine
 import '../App.css';
-import {Lights} from '../light/Lights';
-import Spawner from './Spawner';
-import PlayerBox from './PlayerBox';
+import { Lights } from '../light/Lights';
 import BulletBox from './BulletBox';
+import CameraRig from './CameraRig';
 import MenuPause from './menu/MenuPause';
 import MenuPlay from './menu/MenuPlay';
 import Objetive from './Objetive';
+import PlayerBox from './PlayerBox';
+import Spawner from './Spawner';
+import OutCanvasHtml from './OutCanvasHtml';
+import Footer from './Footer';
+import GameOver from './GameOver';
+import GameStars from './GameStars';
+// import Web3 from '../connectors/Web3';
 
+import { utilsGameContext, UtilsGameContextProvider } from '../context/GameContext';
+
+// SUGERENCIAS
+// Se puede hacer MAS FACIL CON NUMEROS, COMO ESTADO, 1 EN PAUSA, 2 JUGAR, 3 VICTORIA, 4 GAMEOVER
+// rojo x, verde y, azul z
+
+// FUNCIONAMIENTO
 // Juego con fisicas pero sin recorrido de "camera" en base a scroll. La camera se movera con el movimiento del mouse
-export default function Game() {
-	// TODO rojo x, verde y, azul z
-	// TODO Se puede hacer MAS FACIL CON NUMEROS, COMO ESTADO, 1 EN PAUSA, 2 JUGAR, 3 VICTORIA, 4 GAMEOVER
-	const [play, setplay] = useState(false);
-	const [win, setwin] = useState(false);
+// Utilizaremos useState, ya que useContext no funciona bien dentro del elemento "canvas" de "fiber"
 
-	const [move, setmove] = useState({
-		x: 0,
-		y: 0,
-		z: 0,
-	});
+// El texto ira fuera del canvas, ya que al usar "Physics" de "cannon", al poner el mouse encima del html, se vuelve loco
+// TODO resuelto. Al final, utilizando useContext se ha solucionado el problema. Antes tenia en el componente principal declarados los valores con useState
+// y no me dejaba pasarlos al componente htmlOutCanvas sin que se volviera loco
 
-	const utils = {
-		hasCollide: false,
-		// Antes usabamos context, funcionaba cuando queria, ya que no funcionna bien dentro del canvas
-		// Por lo que se ha usado un useState, ya que este objeto no volvia a renderizar el componente (ni sus hijos) cuando cambaiaba de valor
-		/* objetivePosition: {
-      x: 0,
-      y: 0,
-      z: 0,
-    }, */
-	};
+// Si no se ponen los elementos html dentro del "Suspense", se vuelve loca la pantallla
 
-	// Funcion que permite mantener la camara constantemente
-	function Rig(props) {
-		const vec = new Vector3();
-		const {camera, mouse, events} = useThree();
-		useFrame(() => {
-			// este vector "vec", en su parametro z es el que hace que la camara este constantemente en el 7.
-			camera.position.lerp(vec.set(mouse.x * 3, mouse.y * 3, 7), 0.05);
-			// TODO me esta permitiendo cambiar " utils.objetivePosition" sin utilizar Provider.Consumer
-			// utils.objetivePosition = camera.position;
-			setmove(camera.position);
-		});
+const Game = () => {
 
-		const childrenArray = React.Children.toArray(props.children);
-		return <group>{childrenArray}</group>;
-	}
+	const ref = useRef();
 
+	// TODO WinText component
 	return (
-		// <UtilsGameContextProvider>
 		<div className='row'>
-			<div className='col-md-12 my-screen'>
-				<Canvas
-					camera={{
-						position: [0, 0, 3000],
-						fov: 90,
-						rotation: [0, 0, 0],
-					}}>
-					{/* <Html fullscreen>
-            LET GO
-          </Html> */}
-					<CameraShake
-						yawFrequency={0.1}
-						pitchFrequency={0.1}
-						rollFrequency={0.1}
-					/>
-					<OrbitControls
-						enableZoom={false}
-						enablePan={false}
-						enableRotate={false}
-					/>
-					<color attach='background' args={['#080101']} />
-					<Lights />
-					<fog attach='fog' args={['#94ebd8', 0, 100]} />
+			<div className='col-md-12 game-screen'>
+				{/* <Web3 /> */}
+				<UtilsGameContextProvider>
+					<utilsGameContext.Consumer>
+						{(gameUtils) => {
+							return (
+								<>
+									<Suspense fallback={null}>
+										<OutCanvasHtml play={gameUtils.arePlaying.play} counter={gameUtils.counter} />
 
-					{/* <HtmlText
-          setplay={setplay}
-          play={play}
-          win={win}
-        /> */}
+										<Canvas
+											camera={{
+												position: [0, 0, 3000],
+												fov: 90,
+												rotation: [0, 0, 0],
+											}}>
+											<CameraShake
+												yawFrequency={0.1}
+												pitchFrequency={0.1}
+												rollFrequency={0.1}
+											/>
+											<OrbitControls
+												enableZoom={false}
+												enablePan={false}
+												enableRotate={false}
+											/>
+											<color attach='background' args={['#080101']} />
+											<Lights />
+											{gameUtils.arePlaying.play && <fog attach='fog' args={['#232625', 0, 60]} />}
 
-					<Rig>
-						<Physics>
-							{/* <Html position={[-6.5, 7, 0]} className="text-play">HIT TO PLAY</Html>
-            <Html position={[-5.5, 7, 0]} className="text-play">HIT TO PAUSE</Html> */}
-							<PlayerBox setplay={setplay} move={move} />
-							<BulletBox
-								play={play} /* hasCollide={utils.hasCollide} */
-							/>
-							<Objetive
-								setplay={setplay}
-								setwin={setwin}
-								move={move}
-							/>
-							<Spawner play={play} setplay={setplay} />
+											<CameraRig setmove={gameUtils.cameraMovement.setmove}>
+												{/* <Html position={[-6.5, 7, 0]} className="text-play">HIT TO PLAY</Html>
+            										<Html position={[-5.5, 7, 0]} className="text-play">HIT TO PAUSE</Html> */}
+												<Physics>
+													<PlayerBox setplay={gameUtils.arePlaying.setplay} move={gameUtils.cameraMovement.move}
+														gameOver={gameUtils.gameOver} />
+													<BulletBox
+														play={gameUtils.arePlaying.play}
+													/>
+													<Objetive
+														setplay={gameUtils.arePlaying.setplay}
+														setwin={gameUtils.hasWin.setwin}
+														move={gameUtils.cameraMovement.move}
+														counter={gameUtils.counter}
+														tokens={gameUtils.tokens}
+													/>
 
-							<MenuPlay setplay={setplay} />
-							<MenuPause setplay={setplay} />
-						</Physics>
-					</Rig>
-					<Stars
-						radius={1}
-						depth={30}
-						count={5000}
-						factor={3}
-						saturation={0.3}
-						fade
-						speed={1}
-						/** Color of particles (default: 100) */
-						// color?: THREE.ColorRepresentation | Float32Array   ->>> https://github.com/pmndrs/drei#stars
-						color={3}
-					/>
-				</Canvas>
+
+													{gameUtils.arePlaying.play && <Spawner play={gameUtils.arePlaying.play} setplay={gameUtils.arePlaying.setplay} />}
+
+													<MenuPlay arePlaying={gameUtils.arePlaying} gameOver={gameUtils.gameOver} hasWin={gameUtils.hasWin} />
+													<MenuPause arePlaying={gameUtils.arePlaying} counter={gameUtils.counter} />
+
+												</Physics>
+											</CameraRig>
+
+											<GameStars />
+										</Canvas>
+										<GameOver arePlaying={gameUtils.arePlaying} gameOver={gameUtils.gameOver} hasWin={gameUtils.hasWin} tokens={gameUtils.tokens} />
+										<Footer /> {/* Out of Canvas */}
+									</Suspense>
+								</>
+							);
+						}}
+
+					</utilsGameContext.Consumer>
+				</UtilsGameContextProvider>
+
+
 			</div>
 		</div>
 	);
-	{
-		/* </UtilsGameContextProvider> */
-	}
 }
-{
-	/* <TransformControls mode="translate">
-          <mesh />
-        </TransformControls> */
-}
+
+export default Game
