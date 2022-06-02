@@ -61,6 +61,7 @@ export function ConnectWithSelect({
   )
 
   if (error) {
+    console.log('ERRRROOOOOORRRRRRRRRR', error)
     return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Select

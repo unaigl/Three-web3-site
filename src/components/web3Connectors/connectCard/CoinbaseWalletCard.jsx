@@ -4,7 +4,7 @@ import { Accounts } from '../Accounts'
 import { Chain } from '../Chain'
 import { ConnectWithSelect } from '../ConnectWithSelect'
 import { Status } from '../Status'
-import '../.css'
+import '../Card.css'
 
 const { useChainId, useAccounts, useError, useIsActivating, useIsActive, useProvider, useENSNames } = hooks
 

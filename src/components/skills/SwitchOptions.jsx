@@ -1,4 +1,5 @@
 import React from 'react';
+
 // Mine
 import '../App.css';
 import { utilsContext } from '../context/Context.jsx';
@@ -24,6 +25,7 @@ export default function SwitchOptions() {
 		<div className='bg-light ' >
 			<div className='container '>
 				<div className='row'>
+
 					<div className='col-md-12 text-center maxHeight' style={{ height: '100' }}>
 						<fieldset style={{ display: 'inline-flex' }}>
 							<legend className='mt-3 p-1 text-center'>

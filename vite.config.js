@@ -5,6 +5,7 @@
 // import { terser } from "rollup-plugin-terser";
 import {defineConfig} from 'vite';
 import react from '@vitejs/plugin-react';
+import NodeGlobalsPolyfillPlugin from '@esbuild-plugins/node-globals-polyfill';
 
 // const babelConfig = {
 // 	plugins: [],
@@ -34,6 +35,20 @@ export default () => {
 				usePolling: true,
 			},
 			// host: "0.0.0.0"
+		},
+		optimizeDeps: {
+			esbuildOptions: {
+				// Node.js global to browser globalThis
+				define: {
+					global: 'globalThis',
+				},
+				// Enable esbuild polyfill plugins
+				plugins: [
+					NodeGlobalsPolyfillPlugin({
+						buffer: true,
+					}),
+				],
+			},
 		},
 		build: {
 			// target: "es2020",

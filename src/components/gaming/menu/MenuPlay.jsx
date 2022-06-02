@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 
 const MenuPlay = (props) => {
 
-	const colorMap = useLoader(TextureLoader, '../../../public/photos/play.png')
+	const colorMap = useLoader(TextureLoader, '/photos/play.png')
 
 
 	const [ref] = usePlane(() => ({
@@ -18,7 +18,7 @@ const MenuPlay = (props) => {
 	const playGame = () => {
 		props.arePlaying.setplay(true);
 		props.gameOver.setgameover(false);
-		props.hasWin.setWin(false);
+		props.setWin(false);
 	};
 
 	return (
@@ -32,7 +32,7 @@ const MenuPlay = (props) => {
 MenuPlay.propTypes = {
 	arePlaying: PropTypes.object.isRequired,
 	gameOver: PropTypes.object.isRequired,
-	hasWin: PropTypes.object.isRequired,
+	setWin: PropTypes.func.isRequired,
 };
 
 export default MenuPlay;

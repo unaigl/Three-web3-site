@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { TextureLoader } from 'three/src/loaders/TextureLoader';
 
 const MenuPause = (props) => {
-	const colorMap = useLoader(TextureLoader, '../../../public/photos/pause.png')
+	const colorMap = useLoader(TextureLoader, '/photos/pause.png')
 
 
 	const [ref] = usePlane(() => ({

@@ -91,7 +91,7 @@ const Game = () => {
 
 													{gameUtils.arePlaying.play && <Spawner play={gameUtils.arePlaying.play} setplay={gameUtils.arePlaying.setplay} />}
 
-													<MenuPlay arePlaying={gameUtils.arePlaying} gameOver={gameUtils.gameOver} hasWin={gameUtils.hasWin} />
+													<MenuPlay arePlaying={gameUtils.arePlaying} gameOver={gameUtils.gameOver} setwin={gameUtils.hasWin.setwin} />
 													<MenuPause arePlaying={gameUtils.arePlaying} counter={gameUtils.counter} />
 
 												</Physics>

@@ -51,7 +51,7 @@ const Spawner = (props) => {
 					wait={attackers[1]}
 					color={attackers[2]}
 					play={props.play}
-					texture={`../../../public/photos/${randomIntBetween(1, 16)}.jpg`}
+					texture={`/photos/${randomIntBetween(1, 16)}.jpg`}
 
 				/>
 			})}

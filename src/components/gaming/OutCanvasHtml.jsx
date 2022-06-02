@@ -1,13 +1,8 @@
 import React, { utilsContext, useState } from 'react';
 import PropTypes from 'prop-types';
 // Mine
-import { utilsGameContext } from '../context/GameContext.jsx';
-
-import ProviderExample from '../web3Connectors/ProviderExample'
-// import CoinbaseWalletCard from '../components/connectCard/CoinbaseWalletCard'
-// import NetworkCard from '../components/connectCard/NetworkCard'
-// import WalletConnectCard from '../components/connectCard/WalletConnectCard'
-import MetaMaskCard from '../web3Connectors/connectCard/MetaMaskCard'
+import { utilsGameContext } from '../context/GameContext';
+import Modal from '../web3Connectors/Modal';
 
 import '../App.css';
 
@@ -15,12 +10,12 @@ import '../App.css';
 export default function OutCanvasHtml(props) {
 
 	const [wallet, setwallet] = useState('')
+	const [modalIsOpen, setmodalIsOpen] = useState(false)
 
-	const set = () => {
-		// console.log(props.play)
-		if (wallet) return setwallet('')
-		setwallet('0x1CdECa32df426caa5c637886BBD19b888e8E4ca7')
-	};
+	// TODO agregar el address
+	// console.log(props.play)
+	// if (wallet) return setwallet('')
+	// setwallet('0x1CdECa32df426caa5c637886BBD19b888e8E4ca7')
 
 	return (
 		<div className='bg-light '>
@@ -39,34 +34,32 @@ export default function OutCanvasHtml(props) {
 
 					<button
 						className='col-md-3 btn btn-outline-dark btn-md game-info-text'
-						onClick={set}
+						onClick={() => setmodalIsOpen(true)}
 						type='button'
 						style={{
 						}}>
 						{!wallet ? '-Connect-' : 'Disconnect'}
 					</button>
+
+					{modalIsOpen && <Modal modalIsOpen={modalIsOpen} onClose={() => setmodalIsOpen(false)} />}
+
 					<p className=" col-md-3 game-info-text" >
 						{!wallet ? '0x0000000000000000000000000000000000000000' : wallet}
 					</p>
 
 				</fieldset>
 			</div>
-			<div className='col-md-12 text-center '>
-				<ProviderExample />
-				<div style={{ display: 'flex', flexFlow: 'wrap', fontFamily: 'sans-serif' }}>
-					<MetaMaskCard />
-					{/* <WalletConnectCard />
-					<CoinbaseWalletCard />
-					<NetworkCard /> */}
-				</div>
-			</div>
+
 		</div>
 	);
 }
 
 OutCanvasHtml.propTypes = {
 	counter: PropTypes.number,
-
+	play: PropTypes.bool,
+	setPlay: PropTypes.func,
+	setWallet: PropTypes.func,
+	wallet: PropTypes.string,
 };
 
 // TODO estudio. Hay que usar useState para modificar la data que recoge el createContext para que se rendericen los componentes que usan el contexto
