@@ -30,7 +30,7 @@ export default () => {
 	return defineConfig({
 		plugins: [react()],
 		server: {
-			port: 3000,
+			port: 4000,
 			watch: {
 				usePolling: true,
 			},
@@ -46,6 +46,7 @@ export default () => {
 				plugins: [
 					NodeGlobalsPolyfillPlugin({
 						buffer: true,
+						process: true,
 					}),
 				],
 			},

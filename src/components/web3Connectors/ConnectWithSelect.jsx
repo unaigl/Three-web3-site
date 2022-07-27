@@ -6,6 +6,8 @@ import { WalletConnect } from '@web3-react/walletconnect'
 import { useCallback, useState } from 'react'
 import { CHAINS, getAddChainParameters, URLS } from './chains'
 
+import '../App.css'
+
 function Select({
   chainId,
   switchChain,
@@ -13,20 +15,25 @@ function Select({
   chainIds,
 }) {
   return (
-    <select
-      value={chainId}
-      onChange={(event) => {
-        switchChain?.(Number(event.target.value))
-      }}
-      disabled={switchChain === undefined}
-    >
-      {displayDefault ? <option value={-1}>Default Chain</option> : null}
-      {chainIds.map((chainId, key) => (
-        <option key={chainId} value={chainId}>
-          {CHAINS[chainId]?.name ?? chainId}
-        </option>
-      ))}
-    </select>
+    <div className="col-md-8 form-group justify-content-center">
+      {/* <label htmlFor="exampleSelect1" className="form-label mt-4 ">Example select</label> */}
+      <select
+        className="form-select select-menu"
+        id="exampleSelect1"
+        value={chainId}
+        onChange={(event) => {
+          switchChain?.(Number(event.target.value))
+        }}
+        disabled={switchChain === undefined}
+      >
+        {displayDefault ? <option value={-1}>-- Select a Chain</option> : null}
+        {chainIds.map((chainId, key) => (
+          <option key={chainId} value={chainId}>
+            {CHAINS[chainId]?.name ?? chainId}
+          </option>
+        ))}
+      </select>
+    </div>
   )
 }
 
@@ -37,7 +44,7 @@ export function ConnectWithSelect({
   error,
   isActive,
 }) {
-  const isNetwork = connector instanceof Network
+  const isNetwork = connector instanceof Network || chainId
   const displayDefault = !isNetwork
   const chainIds = (isNetwork ? Object.keys(URLS) : Object.keys(CHAINS)).map((chainId) => Number(chainId))
 
@@ -61,7 +68,7 @@ export function ConnectWithSelect({
   )
 
   if (error) {
-    console.log('ERRRROOOOOORRRRRRRRRR', error)
+    // console.log('ERRRROOOOOORRRRRRRRRR', error)
     return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Select
@@ -72,13 +79,15 @@ export function ConnectWithSelect({
         />
         <div style={{ marginBottom: '1rem' }} />
         <button
+          className='btn btn-primary btn-sm'
           onClick={() =>
             connector instanceof WalletConnect || connector instanceof Network
               ? void connector.activate(desiredChainId === -1 ? undefined : desiredChainId)
               : void connector.activate(desiredChainId === -1 ? undefined : getAddChainParameters(desiredChainId))
           }
         >
-          Try Again?
+          {/* Try Again? */}
+          Connect
         </button>
       </div>
     )
@@ -92,7 +101,12 @@ export function ConnectWithSelect({
           chainIds={chainIds}
         />
         <div style={{ marginBottom: '1rem' }} />
-        <button onClick={() => void connector.deactivate()}>Disconnect</button>
+        <button
+          className='btn btn-warning btn-sm'
+          onClick={() => void connector.deactivate()}
+        >
+          Disconnect
+        </button>
       </div>
     )
   } else {
@@ -106,6 +120,7 @@ export function ConnectWithSelect({
         />
         <div style={{ marginBottom: '1rem' }} />
         <button
+          className='btn btn-primary btn-sm'
           onClick={
             isActivating
               ? undefined

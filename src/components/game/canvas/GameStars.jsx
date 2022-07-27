@@ -2,7 +2,6 @@ import { Stars } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useRef, useEffect } from 'react';
 // Mine
-import '../App.css';
 
 
 const GameStars = () => {
@@ -22,7 +21,7 @@ const GameStars = () => {
 			<Stars
 				ref={ref}
 				radius={1}
-				depth={600}
+				depth={200}
 				count={5000}
 				factor={3}
 				saturation={0.9}

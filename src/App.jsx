@@ -1,21 +1,30 @@
 import 'bootswatch/dist/cyborg/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Game from './components/gaming/Game';
-import Skills from './components/skills/Skills';
 import Navbar from './components/navbar/Navbar';
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
+import Spinner from './components/spinner/Spinner'
 
 const App = () => {
+
+	const Game = lazy(() => import('./components/game/Game'));
+	const Skills = lazy(() => import('./components/skills/Skills'));
+
 	return (
 		<React.StrictMode>
 			<BrowserRouter>
 				<Navbar />
 				{/* <div className="container p-4"> */}
-				<Routes>
-					<Route path='/game' element={<Game />} />
-					<Route path='/skills' element={<Skills />} />
-					<Route path='/' exact element={<Skills />} />
-				</Routes>
+				<Suspense fallback={<Spinner>Loading...</Spinner>}>
+					<Routes>
+						<Route path='/' element={<Game />}>
+
+						</Route>
+						<Route path='/libraries' element={<Skills />}>
+
+						</Route>
+					</Routes>
+				</Suspense>
+				{/* </div> */}
 			</BrowserRouter>
 		</React.StrictMode>
 	);

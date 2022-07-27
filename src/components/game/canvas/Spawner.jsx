@@ -11,7 +11,6 @@ const Spawner = (props) => {
 		return Math.floor(Math.random() * (max - min + 1) + min)
 	}
 
-
 	function randomIntBetweenAlsoNegatives(min, max) { // min and max included 
 		const math = Math.floor(Math.random() * (max - min + 1) + min)
 		const random = Math.random()
@@ -19,8 +18,6 @@ const Spawner = (props) => {
 		if (zeroOrOne) return -(math)
 		return math
 	}
-
-
 
 	const attackersArray = [];
 
@@ -35,13 +32,6 @@ const Spawner = (props) => {
 		attackersArray.push(att)
 	}
 
-
-	// useFrame(() => {
-
-	// 	console.log(randomIntBetweenAlsoNegatives(0, 2))
-	// 	console.log(attackersArray)
-	// })
-
 	return (
 		<group>
 			{attackersArray.map((attackers, key) => {
@@ -55,8 +45,6 @@ const Spawner = (props) => {
 
 				/>
 			})}
-
-
 		</group>
 	);
 };

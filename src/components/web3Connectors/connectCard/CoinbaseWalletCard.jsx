@@ -4,7 +4,7 @@ import { Accounts } from '../Accounts'
 import { Chain } from '../Chain'
 import { ConnectWithSelect } from '../ConnectWithSelect'
 import { Status } from '../Status'
-import '../Card.css'
+import '../../App.css'
 
 const { useChainId, useAccounts, useError, useIsActivating, useIsActive, useProvider, useENSNames } = hooks
 
@@ -25,9 +25,9 @@ export default function CoinbaseWalletCard() {
   }, [])
 
   return (
-    <div className="card">
+    <div className="wallet-card">
       <div>
-        <b>Coinbase Wallet</b>
+        <h5>Coinbase Wallet</h5>
         <Status isActivating={isActivating} error={error} isActive={isActive} />
         <div style={{ marginBottom: '1rem' }} />
         <Chain chainId={chainId} />

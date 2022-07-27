@@ -5,6 +5,8 @@ import { utilsContext, UtilsContextProvider } from '../context/Context';
 import Footer from './Footer';
 import MyCanvas from './MyCanvas';
 import SwitchOptions from './SwitchOptions';
+import Spinner from '../spinner/Spinner'
+
 
 // Recorrido de "camera" en el eje "y" en base a scroll. Sin fisicas.
 
@@ -36,7 +38,7 @@ export default function Skills() {
 						{(utils) => {
 							return (
 								<>
-									<Suspense>
+									<Suspense fallback={<Spinner>Loading...</Spinner>}>
 										<MyCanvas
 											light={utils.light}
 											rotationEnable={

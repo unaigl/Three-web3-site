@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react'
 
 function useBalances(
   provider,
-  accounts
+  accounts,
+  setshowWallet
 ) {
   const [balances, setBalances] = useState()
 
@@ -18,7 +19,6 @@ function useBalances(
           setBalances(balances)
         }
       })
-
       return () => {
         stale = true
         setBalances(undefined)
@@ -36,7 +36,19 @@ export function Accounts({
 }) {
   const balances = useBalances(provider, accounts)
 
-  if (accounts === undefined) return null
+  if (accounts === undefined) return <div>
+    Accounts:{' '}
+    <b>
+      <ul>
+        0x
+        <br />
+        {`Ξ0.000`}
+      </ul>
+
+    </b>
+  </div>
+
+
 
   return (
     <div>
@@ -47,7 +59,8 @@ export function Accounts({
           : accounts?.map((account, i) => (
             <ul key={account} style={{ margin: 0, overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {ENSNames?.[i] ?? account}
-              {balances?.[i] ? ` (Ξ${formatEther(balances[i])})` : null}
+              <br />
+              {balances?.[i] ? ` Ξ${Number.parseFloat(formatEther(balances[i])).toFixed(6)}` : null}
             </ul>
           ))}
       </b>

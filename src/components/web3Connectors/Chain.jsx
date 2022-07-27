@@ -5,8 +5,8 @@ export function Chain(chainId) {
   if (chainId === undefined) return null
 
   const name = chainId ? CHAINS[chainId]?.name : undefined
-  console.log('chainId', chainId.chainId)
-  console.log('NAME', name)
+  // console.log('chainId', chainId.chainId)
+  // console.log('NAME', name)
 
   if (name) {
     return (
@@ -19,8 +19,11 @@ export function Chain(chainId) {
   }
 
   return (
-    <div>
-      Chain Id: <div>{chainId.chainId}</div>
+    <div
+      className='justify-content-center align-items-center'
+
+    >
+      Chain Id: {chainId.chainId}
     </div>
   )
 }

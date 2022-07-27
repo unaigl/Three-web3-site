@@ -8,7 +8,6 @@ const Attackers = (props) => {
 
 	const colorMap = useLoader(TextureLoader, props.texture)
 
-
 	let zMovement = -40;
 
 	const [ref, api] = useSphere(() => ({
@@ -44,8 +43,10 @@ const Attackers = (props) => {
 
 	return (
 		<mesh ref={ref}>
-			<sphereGeometry attach='geometry' args={[1, 32, 32]} />
-			<meshStandardMaterial map={colorMap} />
+			{props.play && <>
+				<sphereGeometry attach='geometry' args={[1, 32, 32]} />
+				<meshStandardMaterial map={colorMap} />
+			</>}
 		</mesh>
 	);
 };

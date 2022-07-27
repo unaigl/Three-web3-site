@@ -4,18 +4,12 @@ import PropTypes from 'prop-types'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import ProviderExample from '../web3Connectors/ProviderExample'
-import CoinbaseWalletCard from '../web3Connectors/connectCard/CoinbaseWalletCard'
-import NetworkCard from '../web3Connectors/connectCard/NetworkCard'
-import WalletConnectCard from '../web3Connectors/connectCard/WalletConnectCard'
-import MetaMaskCard from '../web3Connectors/connectCard/MetaMaskCard'
-
 gsap.registerPlugin(ScrollTrigger);
 
 
-const Modal = ({ modalIsOpen, onClose }) => {
+const PlayModal = ({ playModalIsOpen, onClose }) => {
 
-    if (!modalIsOpen) return null
+    if (!playModalIsOpen) return null
 
     useEffect(() => {
         // como estamos observando en el "root", al clickar sobre el "modal" ("portal"), no se lanza ningun evento, por lo que lo he simplificado
@@ -31,10 +25,10 @@ const Modal = ({ modalIsOpen, onClose }) => {
             ".overlay-styles", // a los elementos del DOM, se le coje por clase, no hace falta ref
             {
                 y: -1000, // px
-                x: window.innerWidth / 2 / 2 // MODIFICAR
+                // x: window.innerWidth / 8 // MODIFICAR
             },
             {
-                y: -500,
+                y: -700,
                 duration: 0.5,
             }
         )
@@ -45,25 +39,26 @@ const Modal = ({ modalIsOpen, onClose }) => {
 
     return ReactDom.createPortal(
 
-        <div className="overlay-styles">
+        <div className="col-md-6 overlay-styles">
+            <div className=" btn btn-outline btn-md ">
 
-            <div className='col-md-12 text-center modal-styles' id='targett'>
-                <ProviderExample />
-                <div style={{ display: 'flex', flexFlow: 'wrap', fontFamily: 'sans-serif' }}>
-                    <MetaMaskCard />
-                    <WalletConnectCard />
-                    <CoinbaseWalletCard />
-                    <NetworkCard />
-                </div>
+                <p
+                    style={{ margin: '120px' }}
+                >The white Box will mimic your moves, hit it and earn tokens.
+                    <br />
+                    You have to mantein in the center to have a possibility to hit
+                    <br />
+                    Press play and click on earth to shoot it (straight).
+                </p>
             </div>
         </div>
-        , document.getElementById('portal')
+        , document.getElementById('playPortal')
     )
 }
 
-Modal.prototype = {
+PlayModal.prototype = {
     modalIsOpen: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired
 }
 
-export default Modal
+export default PlayModal

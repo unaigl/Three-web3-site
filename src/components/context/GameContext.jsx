@@ -12,7 +12,8 @@ export const UtilsGameContextProvider = (props) => {
 	const [win, setwin] = useState(false);
 	const [gameover, setgameover] = useState(false);
 	const [counter, setcounter] = useState(0);
-	const [tokens, settokens] = useState(0);
+	const [tokens, settokens] = useState(false);
+	const [buttonOpenModal, setbuttonOpenModal] = useState(false);
 	// Valores que se usaran en el componente del "PlayerBox, Objetive y CameraRig" para monitorizar movimientos espejo
 	const [move, setmove] = useState({
 		x: 0,
@@ -24,9 +25,10 @@ export const UtilsGameContextProvider = (props) => {
 		arePlaying: { play, setplay },
 		hasWin: { win, setwin },
 		cameraMovement: { move, setmove },
-		gameOver: { gameover, setgameover },
+		gameover: { gameover, setgameover },
 		counter: { counter, setcounter },
 		tokens: { tokens, settokens },
+		buttonOpenModal: { buttonOpenModal, setbuttonOpenModal },
 
 	};
 

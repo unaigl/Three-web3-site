@@ -30,7 +30,7 @@ export function getAddChainParameters(chainId) {
 }
 
 export const CHAINS = {
-	1: {
+	/* 1: {
 		urls: [
 			import.meta.env.VITE_APP_INFURA_KEY
 				? `https://mainnet.infura.io/v3/${
@@ -45,7 +45,7 @@ export const CHAINS = {
 			'https://cloudflare-eth.com',
 		].filter((url) => url !== undefined),
 		name: 'Mainnet',
-	},
+	}, */
 	3: {
 		urls: [
 			import.meta.env.VITE_APP_INFURA_KEY
@@ -94,8 +94,9 @@ export const CHAINS = {
 						import.meta.env.VITE_APP_INFURA_KEY
 				  }`
 				: undefined,
-			'https://mainnet.optimism.io',
-		].filter((url) => url !== undefined),
+			// 'https://mainnet.optimism.io',
+		],
+		// .filter((url) => url !== undefined),
 		name: 'Optimism',
 		nativeCurrency: ETH,
 		blockExplorerUrls: ['https://optimistic.etherscan.io'],
@@ -107,8 +108,9 @@ export const CHAINS = {
 						import.meta.env.VITE_APP_INFURA_KEY
 				  }`
 				: undefined,
-			'https://kovan.optimism.io',
-		].filter((url) => url !== undefined),
+			// 'https://kovan.optimism.io',
+		],
+		// .filter((url) => url !== undefined),
 		name: 'Optimism Kovan',
 		nativeCurrency: ETH,
 		blockExplorerUrls: ['https://kovan-optimistic.etherscan.io'],
@@ -166,6 +168,34 @@ export const CHAINS = {
 		nativeCurrency: MATIC,
 		blockExplorerUrls: ['https://mumbai.polygonscan.com'],
 	},
+	// BINANCE TESTNET
+	97: {
+		// urls: [
+		// 	import.meta.env.VITE_APP_INFURA_KEY
+		// 		? `https://polygon-mainnet.infura.io/v3/${
+		// 				import.meta.env.VITE_APP_INFURA_KEY
+		// 		  }`
+		// 		: undefined,
+		// 	'https://polygon-rpc.com',
+		// ].filter((url) => url !== undefined),
+		urls: 'https://data-seed-prebsc-1-s1.binance.org:8545',
+		name: 'Binance Testnet',
+		nativeCurrency: MATIC,
+		blockExplorerUrls: ['https://polygonscan.com'],
+	},
+	// BINANCE MAIN
+	56: {
+		// TODO modificado
+		// urls: [import.meta.env.VITE_APP_INFURA_KEY ? `https://polygon-mumbai.infura.io/v3/${import.meta.env.VITE_APP_INFURA_KEY}` : undefined].filter(
+		//   (url) => url !== undefined
+		// ),
+		urls: `https://binance-mainnet.infura.io/v3/${
+			import.meta.env.VITE_APP_INFURA_KEY.INFURA_KEY
+		}`,
+		name: 'Binance Mainnet',
+		nativeCurrency: MATIC,
+		blockExplorerUrls: ['https://mumbai.polygonscan.com'],
+	},
 };
 
 export const URLS = Object.keys(CHAINS).reduce((accumulator, chainId) => {
@@ -178,6 +208,6 @@ export const URLS = Object.keys(CHAINS).reduce((accumulator, chainId) => {
 	return accumulator;
 }, {});
 
-(() => {
-	console.log('URLS', URLS);
-})();
+// (() => {
+// 	console.log('URLS', URLS);
+// })();

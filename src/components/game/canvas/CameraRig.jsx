@@ -3,11 +3,6 @@ import React from 'react';
 import { Vector3 } from 'three';
 import PropTypes from 'prop-types'
 
-// Mine
-import '../App.css';
-
-
-
 // Funcion que permite mantener la camara constantemente en movimiento (balanceandose)
 function CameraRig(props) {
 	const vec = new Vector3();

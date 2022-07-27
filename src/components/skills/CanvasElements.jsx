@@ -48,7 +48,7 @@ const CanvasElements = (props) => {
 					start: '400 200px',
 					end: '+=1400px',
 					scrub: 5,
-					markers: true,
+					// markers: true,
 					onUpdate: function (self) {
 						modelChairObject.rotation.x =
 							(2.0 * 3.14 * self.progress) / 2;
@@ -86,6 +86,7 @@ const CanvasElements = (props) => {
 					<h1
 						className={
 							props.light.isLightSky ? 'black-text' : 'white-text'
+
 						}>
 						JavaScript
 					</h1>

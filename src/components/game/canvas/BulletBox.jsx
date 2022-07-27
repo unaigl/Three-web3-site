@@ -9,7 +9,7 @@ import { useState } from 'react'
 const BulletBox = (props) => {
 	// const utils = useContext(UtilsGameContext);
 	const [size, setsize] = useState(1)
-	const colorMap = useLoader(TextureLoader, '../../../public/photos/00.png')
+	const colorMap = useLoader(TextureLoader, '/photos/00.png')
 
 	const [ref, api] = useSphere(() => ({
 		mass: 0,
@@ -24,7 +24,7 @@ const BulletBox = (props) => {
 
 
 	let isShoot = false;
-	let increase = 1.3;
+	let increase = 1.05;
 
 	useFrame(() => {
 		api.rotation.set(0 + 0.005, 0 + 0.01, 0);
@@ -39,7 +39,7 @@ const BulletBox = (props) => {
 			isShoot = true;
 			window.setTimeout(() => {
 				isShoot = false;
-				increase = 1.3;
+				increase = 1.05;
 				api.position.set(0, 0, 0);
 				// props.collide = false;
 			}, 2000);

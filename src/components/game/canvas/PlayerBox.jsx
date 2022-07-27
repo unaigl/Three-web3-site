@@ -1,6 +1,7 @@
 import { useBox, } from '@react-three/cannon';
 import { useFrame } from '@react-three/fiber';
 import PropTypes from 'prop-types'
+import { useEffect } from 'react'
 // import { UtilsGameContext } from "../context/GameContext";
 
 const PlayerBox = (props) => {
@@ -22,10 +23,14 @@ const PlayerBox = (props) => {
 		collisionFilterMask: 4,
 		onCollide: (e) => {
 			// if (e.collisionFilters.bodyFilterGroup == 4)
-			props.gameOver.setgameover(true)
-			window.scrollTo(0, 0.5 * window.innerHeight);
-			console.log(props.gameOver.gameover);
+			props.gameover.setgameover(true)
+			// window.scrollTo(0, 0.5 * window.innerHeight);
+			// console.log(props.gameover.gameover);
 			props.setplay(false);
+			setTimeout(() => {
+				props.gameover.setgameover(false)
+			}, 1000);
+
 		},
 	}));
 
@@ -35,10 +40,12 @@ const PlayerBox = (props) => {
 	});
 
 	return (
-		<mesh ref={ref}>
-			<boxBufferGeometry attach='geometry' args={[1, 1, 1]} />
-			<meshStandardMaterial />
-		</mesh>
+		<>
+			<mesh ref={ref}>
+				<boxBufferGeometry attach='geometry' args={[1, 1, 1]} />
+				{/* <meshStandardMaterial /> */}
+			</mesh>
+		</>
 	);
 };
 
@@ -52,7 +59,7 @@ PlayerBox.propTypes = {
 };
 
 PlayerBox.propTypes = {
-	gameOver: PropTypes.shape({
+	gameover: PropTypes.shape({
 		gameover: PropTypes.bool,
 		setgameover: PropTypes.func,
 	}),

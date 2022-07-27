@@ -1,0 +1,30 @@
+.htmlcanvas-gameover {
+	font-size: 1rem;
+	animation: pulse-gameover 0.6s linear 0.3s infinite normal forwards;
+}
+@keyframes pulse-gameover {
+	0% {
+		color: rgb(141, 26, 26);
+	}
+	50% {
+		color: hsla(0, 0%, 100%, 0.1);
+	}
+	100% {
+		color: rgb(228, 105, 105);
+	}
+}
+.htmlcanvas-winner {
+	font-size: 1rem;
+	animation: pulse-winner 0.6s linear 0.3s infinite normal forwards;
+}
+@keyframes pulse-winner {
+	0% {
+		color: rgb(7, 80, 30);
+	}
+	50% {
+		color: hsla(0, 0%, 100%, 0.1);
+	}
+	100% {
+		color: rgb(105, 228, 140);
+	}
+}
