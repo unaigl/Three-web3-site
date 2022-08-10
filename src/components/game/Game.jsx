@@ -90,32 +90,31 @@ const Game = () => {
 											{gameUtils.gameover.gameover && <HtmlCanvas> GAMEOVER </HtmlCanvas>}
 											{gameUtils.hasWin.win && <HtmlCanvas> WINNER </HtmlCanvas>}
 
-											<CameraRig setmove={gameUtils.cameraMovement.setmove}>
-												{/* <Html position={[-6.5, 7, 0]} className="text-play">HIT TO PLAY</Html>
+											<CameraRig setmove={gameUtils.cameraMovement.setmove} />
+											{/* <Html position={[-6.5, 7, 0]} className="text-play">HIT TO PLAY</Html>
             										<Html position={[-5.5, 7, 0]} className="text-play">HIT TO PAUSE</Html> */}
-												<Physics>
-													<PlayerBox setplay={gameUtils.arePlaying.setplay} move={gameUtils.cameraMovement.move}
-														gameover={gameUtils.gameover} />
-													<BulletBox
-														play={gameUtils.arePlaying.play}
-													/>
-													<Objetive
-														setplay={gameUtils.arePlaying.setplay}
-														setwin={gameUtils.hasWin.setwin}
-														move={gameUtils.cameraMovement.move}
-														counter={gameUtils.counter.counter}
-														setcounter={gameUtils.counter.setcounter}
-														settokens={gameUtils.tokens.settokens}
-													/>
+											<Physics>
+												<PlayerBox setplay={gameUtils.arePlaying.setplay} move={gameUtils.cameraMovement.move}
+													gameover={gameUtils.gameover} />
+												<BulletBox
+													play={gameUtils.arePlaying.play}
+												/>
+												<Objetive
+													setplay={gameUtils.arePlaying.setplay}
+													setwin={gameUtils.hasWin.setwin}
+													move={gameUtils.cameraMovement.move}
+													counter={gameUtils.counter.counter}
+													setcounter={gameUtils.counter.setcounter}
+													settokens={gameUtils.tokens.settokens}
+												/>
 
 
-													<Spawner play={gameUtils.arePlaying.play} setplay={gameUtils.arePlaying.setplay} />
+												<Spawner play={gameUtils.arePlaying.play} setplay={gameUtils.arePlaying.setplay} />
 
-													<MenuPlay arePlaying={gameUtils.arePlaying} gameover={gameUtils.gameover} setwin={gameUtils.hasWin.setwin} />
-													<MenuPause arePlaying={gameUtils.arePlaying} counter={gameUtils.counter} />
+												<MenuPlay arePlaying={gameUtils.arePlaying} gameover={gameUtils.gameover} setwin={gameUtils.hasWin.setwin} />
+												<MenuPause arePlaying={gameUtils.arePlaying} counter={gameUtils.counter} />
 
-												</Physics>
-											</CameraRig>
+											</Physics>
 
 											<GameStars />
 										</Canvas>
