@@ -14,7 +14,7 @@ const App = () => {
 			<BrowserRouter>
 				{/* <Navbar /> */}
 				{/* <div className="container p-4"> */}
-				<Suspense fallback={<Spinner>Loading...</Spinner>}>
+				<Suspense fallback={<Spinner>Welcome</Spinner>}>
 					<Routes>
 						<Route path='/' element={<Game />}>
 

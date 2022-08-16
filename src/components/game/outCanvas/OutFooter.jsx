@@ -50,13 +50,9 @@ const OutCanvasFooter = (props) => {
                     <div className="footer-bg">
                         <div className="footer-card-margin">
                             <div className='footer-card-style'>
-                                {/* <div className="col-md-12 text-center card-title-margin ">
-                            <h5>{!props.arePlaying.play ? 'Try ! One minute Game ' : 'Good luck'}</h5>
-                        </div> */}
                                 <div className="col-md-12 text-center card-title-margin">
                                     {props.tokens ? <h5 >Now you can claim tokens</h5> : <h5 >Play to be able to claim tokens</h5>}
                                     <hr />
-                                    {/* <p>Tokens available in the following chains</p> */}
                                     <p>You are able to claim in two chains </p>
                                     <small>0x41e6913Ce749018910e45980996dAC1F99012c96</small>
                                     <p>Mumbai</p>
@@ -64,24 +60,9 @@ const OutCanvasFooter = (props) => {
                                     <p>BSC testnet</p>
                                     <p>Claim or Burn ONE token for each transaction</p>
                                     <small>Select a wallet</small>
-
-
-                                    {/* <p>Mumbai (polygon testnet): __ 0x41e6913Ce749018910e45980996dAC1F99012c96</p>
-                            <p>BSC testnet: __ 0x41e6913Ce749018910e45980996dAC1F99012c96</p> */}
                                 </div>
-                                {/* --------------------------------------------------------------------------------------------------------------------------------------- */}
                                 <hr />
                                 <div className="col-md-12 text-center responsive-cards ">
-                                    {/* {cards && cards.map((card, i) => {
-                                return (<Card
-                                    key={i}
-                                    buttonContent={'Claim Tokens'}
-                                    buttonTwoContent={'Transfer Tokens'}
-                                    tx={writeToContractUsingWeb3React}
-                                    photo={card[0]}
-                                    text={card[1]}
-                                />)
-                            })} */}
                                     <TransactionMetaMask
                                         tokens={props.tokens}
                                         setbuttonOpenModal={props.setbuttonOpenModal}
@@ -97,18 +78,26 @@ const OutCanvasFooter = (props) => {
                                         setbuttonOpenModal={props.setbuttonOpenModal}
                                         buttonOpenModal={props.buttonOpenModal}
                                     />
-
+                                </div>
+                                <div className="col-md-12 text-center card-title-margin">
+                                    <hr />
+                                    <small >
+                                        Check how has been built
+                                        <a
+                                            href='https://dev.to/uigla/setting-up-3d-website-using-threejs-fiber-react-web3-and-vite-as-bundler-f1f'
+                                            target='_blank'
+                                            rel='noopener noreferrer'>
+                                            {`  here`}
+                                        </a>
+                                    </small>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <ContactFooter />
 
+                    <ContactFooter />
                 </div>
             </div>
-
-
-
         </>
     )
 }

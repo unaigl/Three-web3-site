@@ -19,12 +19,11 @@ p {
 	z-index: 1000;
 }
 .wallet-modal {
-	padding: 20px;
+	display: 'block';
+	padding: 30px;
 	background: rgba(2, 1, 26, 0.7);
 	border: 4px solid #05023d;
 	border-radius: 10px;
-	padding: '30px';
-	display: 'block';
 }
 .play-modal-center-text {
 	display: flex;
@@ -50,6 +49,20 @@ p {
 }
 .card-title-margin {
 	margin-top: 30px;
+}
+/* FOOTER CONTACT grid structure */
+.footer-center {
+	display: grid;
+	justify-content: center;
+}
+.responsive-contact-footer {
+	display: grid;
+	justify-content: center;
+	width: 30vw;
+	margin-left: 100px;
+	/* grid-template-columns: repeat(5, 1fr); // DEFINED in component*/
+	align-items: center;
+	gap: 5px;
 }
 
 /* SKILLS */

@@ -14,12 +14,12 @@ const OutCanvasFooter = (props) => {
 
   return (
     <>
-      <div className="md-12 ">
+      <div className="md-4 ">
         <div className="footer-center">
           <div className="responsive-contact-footer" style={{ gridTemplateColumns: `repeat(${6}, 1fr)` }}>
             <h2 className="footer-display">
               <a
-                href="https://github.com/unaigl"
+                href="https://github.com/unaigl/Three-web3-site"
                 target="_blank"
                 rel="noreferrer"
               >
