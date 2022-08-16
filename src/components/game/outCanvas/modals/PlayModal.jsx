@@ -42,16 +42,18 @@ const PlayModal = ({ playModalIsOpen, onClose }) => {
 
         <div className="overlay-styles" style={{ width: '80vw' }}>
             <div className="wallet-modal">
-                <div className=" btn btn-outline btn-md ">
+                <div className="play-modal-center-text">
+                    <div className=" btn btn-outline btn-md ">
 
-                    <p
-                        style={{ margin: '20px' }}
-                    >The white Box will mimic your moves, hit it and earn tokens.
-                        <br />
-                        You have to mantein in the center to have a possibility to hit
-                        <br />
-                        Press play and click on earth to shoot it (straight).
-                    </p>
+                        <p
+                            style={{ margin: '20px' }}
+                        >The white Box will mimic your moves, hit it and earn tokens.
+                            <br />
+                            You have to mantein in the center to have a possibility to hit
+                            <br />
+                            Press play and click on earth to shoot it (straight).
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

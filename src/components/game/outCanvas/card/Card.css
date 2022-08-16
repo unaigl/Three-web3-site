@@ -99,3 +99,12 @@
 	background-color: rgb(44, 124, 215);
 	font-size: 1em;
 }
+/* FOOTER CONTACT grid structure */
+.responsive-contact-footer {
+	display: grid;
+	margin-left: 100px;
+	/* grid-template-columns: repeat(5, 1fr); */
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
