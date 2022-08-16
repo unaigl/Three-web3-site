@@ -24,11 +24,12 @@ const PlayModal = ({ playModalIsOpen, onClose }) => {
         gsap.fromTo(
             ".overlay-styles", // a los elementos del DOM, se le coje por clase, no hace falta ref
             {
-                y: -1000, // px
-                // x: window.innerWidth / 8 // MODIFICAR
+                y: -1200, /* px */
+                x: 0
             },
             {
-                y: -700,
+                y: -620,
+                x: window.innerWidth / 10,
                 duration: 0.5,
             }
         )
@@ -39,17 +40,19 @@ const PlayModal = ({ playModalIsOpen, onClose }) => {
 
     return ReactDom.createPortal(
 
-        <div className="col-md-6 overlay-styles">
-            <div className=" btn btn-outline btn-md ">
+        <div className="overlay-styles" style={{ width: '80vw' }}>
+            <div className="wallet-modal">
+                <div className=" btn btn-outline btn-md ">
 
-                <p
-                    style={{ margin: '120px' }}
-                >The white Box will mimic your moves, hit it and earn tokens.
-                    <br />
-                    You have to mantein in the center to have a possibility to hit
-                    <br />
-                    Press play and click on earth to shoot it (straight).
-                </p>
+                    <p
+                        style={{ margin: '20px' }}
+                    >The white Box will mimic your moves, hit it and earn tokens.
+                        <br />
+                        You have to mantein in the center to have a possibility to hit
+                        <br />
+                        Press play and click on earth to shoot it (straight).
+                    </p>
+                </div>
             </div>
         </div>
         , document.getElementById('playPortal')

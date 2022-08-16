@@ -16,15 +16,6 @@ export default function OutCanvasMenu(props) {
 		<div className='bg-light '>
 			<div className='col-md-12 text-center'>
 				<fieldset style={{ display: 'inline-flex' }}>
-					{/* 
-					<div className="col-md-3">
-						<h5 className="game-info-text">Score</h5>
-					</div>
-					<div className="col-md-3">
-						<h5 className="game-info-text">{props.counter.counter}</h5>
-					</div> */}
-
-
 					<button
 						className='col-md-3 btn btn-outline-dark btn-md game-info-text'
 						onClick={() => setplayModalIsOpen(true)}
@@ -73,31 +64,3 @@ OutCanvasMenu.propTypes = {
 	setbuttonOpenModal: PropTypes.func,
 	buttonOpenModal: PropTypes.bool
 };
-
-// TODO estudio. Hay que usar useState para modificar la data que recoge el createContext para que se rendericen los componentes que usan el contexto
-// Si se usa .consumer -> este componente se re-renderiza cada vez que cambia algo en el context, sino no
-
-/* <legend className='mt-3 p-1 '>
-								<div
-									className='form-check form-switch'
-									style={{ display: 'inline-flex' }}>
-									<input
-										onClick={enableRotation}
-										className='form-check-input'
-										type='checkbox'
-										id='flexSwitchCheckChecked'
-										defaultChecked
-									/>
-									<label
-										className='form-check-label'
-										htmlFor='flexSwitchCheckDefault'
-									/>
-								</div>
-								<h5
-									style={{
-										display: 'inline-flex',
-										color: 'gray',
-									}}>
-									CameDAWtion
-								</h5>
-							</legend> */

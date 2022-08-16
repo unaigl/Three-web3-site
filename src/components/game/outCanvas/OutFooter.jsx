@@ -43,23 +43,34 @@ const OutCanvasFooter = (props) => {
 
     return (
         <>
-            <div className="my-container">
-                <div className="game-prebox">
-                    <div className='gameover-footer '>
-                        {/* <div className="col-md-12 text-center some-margin ">
-                            <h4>{!props.arePlaying.play ? 'Try ! One minute Game ' : 'Good luck'}</h4>
+            <div className="bg-footer-color">
+                <div className="container">
+                    <div className="footer-bg">
+                        <div className="footer-card-margin">
+                            <div className='footer-card-style'>
+                                {/* <div className="col-md-12 text-center card-title-margin ">
+                            <h5>{!props.arePlaying.play ? 'Try ! One minute Game ' : 'Good luck'}</h5>
                         </div> */}
-                        <div className="col-md-12 text-center some-margin">
-                            {props.tokens ? <h4 >You can claim  token</h4> : <h4 >Play to be able to claim tokens</h4>}
-                            <hr />
-                            <p>Tokens available in the following chains:</p>
-                            <p>Mumbai (polygon testnet): __ 0x41e6913Ce749018910e45980996dAC1F99012c96</p>
-                            <p>BSC testnet: __ 0x41e6913Ce749018910e45980996dAC1F99012c96</p>
-                        </div>
-                        {/* --------------------------------------------------------------------------------------------------------------------------------------- */}
-                        <hr />
-                        <div className="col-md-12 text-center  ">
-                            {/* {cards && cards.map((card, i) => {
+                                <div className="col-md-12 text-center card-title-margin">
+                                    {props.tokens ? <h5 >Now you can claim tokens</h5> : <h5 >Play to be able to claim tokens</h5>}
+                                    <hr />
+                                    {/* <p>Tokens available in the following chains</p> */}
+                                    <p>You are able to claim in two chains </p>
+                                    <small>0x41e6913Ce749018910e45980996dAC1F99012c96</small>
+                                    <p>Mumbai</p>
+                                    <small>0x6Ec4c5Ce6cC67729d89785f715e103e5981C9780</small>
+                                    <p>BSC testnet</p>
+                                    <p>Claim or Burn ONE token for each transaction</p>
+                                    <small>Select a wallet</small>
+
+
+                                    {/* <p>Mumbai (polygon testnet): __ 0x41e6913Ce749018910e45980996dAC1F99012c96</p>
+                            <p>BSC testnet: __ 0x41e6913Ce749018910e45980996dAC1F99012c96</p> */}
+                                </div>
+                                {/* --------------------------------------------------------------------------------------------------------------------------------------- */}
+                                <hr />
+                                <div className="col-md-12 text-center responsive-cards ">
+                                    {/* {cards && cards.map((card, i) => {
                                 return (<Card
                                     key={i}
                                     buttonContent={'Claim Tokens'}
@@ -69,36 +80,38 @@ const OutCanvasFooter = (props) => {
                                     text={card[1]}
                                 />)
                             })} */}
-                            <TransactionMetaMask
-                                tokens={props.tokens}
-                                setbuttonOpenModal={props.setbuttonOpenModal}
-                                buttonOpenModal={props.buttonOpenModal}
-                            />
-                            <TransactionCoinbaseWallet
-                                tokens={props.tokens}
-                                setbuttonOpenModal={props.setbuttonOpenModal}
-                                buttonOpenModal={props.buttonOpenModal}
-                            />
-                            <TransactionWalletConnect
-                                tokens={props.tokens}
-                                setbuttonOpenModal={props.setbuttonOpenModal}
-                                buttonOpenModal={props.buttonOpenModal}
-                            />
+                                    <TransactionMetaMask
+                                        tokens={props.tokens}
+                                        setbuttonOpenModal={props.setbuttonOpenModal}
+                                        buttonOpenModal={props.buttonOpenModal}
+                                    />
+                                    <TransactionCoinbaseWallet
+                                        tokens={props.tokens}
+                                        setbuttonOpenModal={props.setbuttonOpenModal}
+                                        buttonOpenModal={props.buttonOpenModal}
+                                    />
+                                    <TransactionWalletConnect
+                                        tokens={props.tokens}
+                                        setbuttonOpenModal={props.setbuttonOpenModal}
+                                        buttonOpenModal={props.buttonOpenModal}
+                                    />
 
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             {/* FOOTER SCROLL TO TOP */}
-            <div className='bg-light' style={{ height: '100px' }}>
+            <div className='bg-light' style={{ height: '80px' }}>
                 {/* <div className='container '> */}
                 <div className='row'>
                     <div className='col-md-12 text-center'>
                         <button
                             onClick={() => { window.scrollTo(0, 0) }}
                             type='button'
-                            className='btn btn-outline-dark btn-lg'
+                            className='btn btn-outline-dark btn-md'
                             style={{ display: 'inline-flex', margin: '20px' }}>
                             ⇑
                         </button>

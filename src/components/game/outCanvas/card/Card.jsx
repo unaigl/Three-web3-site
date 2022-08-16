@@ -20,13 +20,10 @@ const Card = (props) => {
                     <div className="content">
                         <div className="imgBx">
                             <img src={props.photo} />
-
                         </div>
-                        {/* <h4>METAMASK </h4> */}
-                        <h5>
-                            {props.text}
-                        </h5>
-
+                        <small>How to use
+                            <a href={props.url}
+                                target='_blank' rel='noopener noreferrer'>{props.urlText}</a></small>
                     </div>
                     <ul className="sci">
                         <li>

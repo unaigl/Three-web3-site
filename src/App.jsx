@@ -12,7 +12,7 @@ const App = () => {
 	return (
 		<React.StrictMode>
 			<BrowserRouter>
-				<Navbar />
+				{/* <Navbar /> */}
 				{/* <div className="container p-4"> */}
 				<Suspense fallback={<Spinner>Loading...</Spinner>}>
 					<Routes>

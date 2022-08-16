@@ -10,8 +10,8 @@ const MenuPause = (props) => {
 	const [size, setsize] = useState([1, 1])
 
 	const [ref] = usePlane(() => ({
-		position: [-5, 4.5, -5],
-		rotation: [90 * (-Math.PI / 2), 90, 0]
+		position: [1, 9, -5],
+		rotation: [0, 0, 0]
 	}));
 
 	const playGame = () => {

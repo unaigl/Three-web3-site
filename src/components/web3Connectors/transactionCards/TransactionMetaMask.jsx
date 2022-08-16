@@ -45,8 +45,8 @@ export default function TransactionMetaMask(props) {
       claim={claimTokenTx}
       burn={burnTokenTx}
       photo={'/cardPhotos/metamask.jpg'}
-      text={<><p>You are able to use several CHAINS using Metamask! </p>
-        <b>Claim or Burn ONE token for each transaction</b></>}
+      url={'https://dev.to/metamask/a-guide-to-metamask-ecosystem-leading-ethereum-blockchain-wallet-59k7'}
+      urlText={' Metamask'}
     />
   )
 }

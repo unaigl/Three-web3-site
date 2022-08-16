@@ -33,13 +33,13 @@ export default function TransactionWalletConnect(props) {
       setbuttonOpenModal={props.setbuttonOpenModal}
       buttonOpenModal={props.buttonOpenModal}
       disabled={props.tokens}
-      buttonContent={'Claim Tokens'}
-      buttonTwoContent={'Burn Tokens'}
+      buttonContent={'Claim'}
+      buttonTwoContent={'Burn'}
       claim={claimTokenTx}
       burn={burnTokenTx}
       photo={'/cardPhotos/walletConnect.jpg'}
-      text={<><p>You are able to use several CHAINS using Wallet Connect! </p>
-        <b>Claim or Burn ONE token for each transaction</b></>}
+      url={'https://academy.binance.com/es/articles/how-to-use-walletconnect'}
+      urlText={' Wallet Connect'}
     />
   )
 }

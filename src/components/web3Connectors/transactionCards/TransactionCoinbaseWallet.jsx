@@ -34,13 +34,13 @@ export default function TransactionCoinbaseWallet(props) {
       setbuttonOpenModal={props.setbuttonOpenModal}
       buttonOpenModal={props.buttonOpenModal}
       disabled={props.tokens}
-      buttonContent={'Claim Tokens'}
-      buttonTwoContent={'Burn Tokens'}
+      buttonContent={'Claim'}
+      buttonTwoContent={'Burn'}
       claim={claimTokenTx}
       burn={burnTokenTx}
       photo={'/cardPhotos/coinbase.jpg'}
-      text={<><p>You are able to use several CHAINS using Coinbase Wallet! </p>
-        <b>Claim or Burn ONE token for each transaction</b></>}
+      url={'https://www.coinbase.com/es/wallet/tutorials'}
+      urlText={' Coinbase Wallet'}
     />
   )
 }

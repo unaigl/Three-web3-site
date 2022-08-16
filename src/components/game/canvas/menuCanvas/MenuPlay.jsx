@@ -13,15 +13,15 @@ const MenuPlay = (props) => {
 	const [size, setsize] = useState([1, 1])
 
 	const [ref] = usePlane(() => ({
-		position: [-7, 5, -5],
-		rotation: [90 * (-Math.PI / 2), 90, 0]
+		position: [-1, 9, -5],
+		rotation: [0, 0, 45]
 	}));
 
 	const playGame = () => {
 		props.arePlaying.setplay(true);
 		props.gameover.setgameover(false);
 		props.setwin(false);
-		window.scrollTo(0, 0.15 * window.innerHeight);
+		// window.scrollTo(0, 0.15 * window.innerHeight);
 		setsize([1.5, 1.5])
 		setTimeout(() => {
 			setsize([1, 1])

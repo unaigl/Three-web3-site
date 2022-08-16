@@ -25,11 +25,12 @@ const Modal = ({ modalIsOpen, onClose }) => {
         gsap.fromTo(
             ".overlay-styles", // a los elementos del DOM, se le coje por clase, no hace falta ref
             {
-                y: -1200, // px
-                // x: window.innerWidth / 2 / 2 // MODIFICAR
+                y: -1200, /* px */
+                x: 0
             },
             {
-                y: -950,
+                y: -620,
+                x: window.innerWidth / 10,
                 duration: 0.5,
             }
         )
@@ -45,9 +46,9 @@ const Modal = ({ modalIsOpen, onClose }) => {
     // V2. Este componente si que hay que usarlo en todos los casos, la cosa es que aun declarada... no se estaba usando. es un Web3ReactProvider
     return ReactDom.createPortal(
 
-        <div className="col-md-6 overlay-styles">
+        <div className="overlay-styles">
 
-            <div className='text-center modal-styles '>
+            <div className='text-center  '>
                 <Web3ChildConnector />
             </div>
         </div>

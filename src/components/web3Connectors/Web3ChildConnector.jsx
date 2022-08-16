@@ -11,6 +11,7 @@ import WalletConnectCard from './connectCard/WalletConnectCard'
 import MetaMaskCard from './connectCard/MetaMaskCard'
 import { URLS } from "./chains";
 
+import "../App.css"
 
 function getName(connector) {
   if (connector instanceof MetaMask) return 'MetaMask'
@@ -52,7 +53,7 @@ export default function Web3ChildConnector() {
 
   return (
     <div
-      style={{ top: '-500px', background: 'rgba(33,33,33,0.6)', margin: '100px', padding: '30px', display: 'block' }}
+      className='wallet-modal'
     >
       <b style={{ bottom: '300px' }}>{errorMessage}</b>
       <MetaMaskCard  // Todas las funcionalidades las sacaremos de los conectores, mediante hooks. Supongo que las biblios de las wallets se han
