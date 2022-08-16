@@ -19,10 +19,10 @@ const PlayModal = ({ playModalIsOpen, onClose }) => {
             if (e.clientX || e.isTrusted || e.cancelable) return onClose()
         }
         document.getElementById('root').addEventListener('click', closeModal);
-        // La funcion return se ejecuta cuando se va a desmontar el componente
+
 
         gsap.fromTo(
-            ".overlay-styles", // a los elementos del DOM, se le coje por clase, no hace falta ref
+            ".overlay-styles",
             {
                 y: -1200, /* px */
                 x: 0

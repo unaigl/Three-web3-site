@@ -1,34 +1,4 @@
 import {Contract} from '@ethersproject/contracts';
-// Contrato "store" en rinkeby
-// export const contractAbi = [
-// 	{
-// 		inputs: [],
-// 		name: 'retrieve',
-// 		outputs: [
-// 			{
-// 				internalType: 'uint256',
-// 				name: '',
-// 				type: 'uint256',
-// 			},
-// 		],
-// 		stateMutability: 'view',
-// 		type: 'function',
-// 	},
-// 	{
-// 		inputs: [
-// 			{
-// 				internalType: 'uint256',
-// 				name: 'num',
-// 				type: 'uint256',
-// 			},
-// 		],
-// 		name: 'store',
-// 		outputs: [],
-// 		stateMutability: 'nonpayable',
-// 		type: 'function',
-// 	},
-// ];
-// export const contractAddress = '0xcc3FCffB9361f5EA42918F083Fc6Ccd71652B4F1';
 
 // Same ABI for all SC living in EVM compatible networks
 export const contractAbi = [
@@ -214,13 +184,9 @@ export const contractAbi = [
 	},
 ];
 
-// const contractAddress = [
-// 	'0x41e6913ce749018910e45980996dac1f99012c96', // MUMBAI
-// 	'0x6ec4c5ce6cc67729d89785f715e103e5981c9780', // BSC T
-// ];
 const contractsAddress = {
 	80001: '0x41e6913ce749018910e45980996dac1f99012c96', // MUMBAI
-	97: '0x6ec4c5ce6cc67729d89785f715e103e5981c9780', // BSC T
+	97: '0x6ec4c5ce6cc67729d89785f715e103e5981c9780', // BSC Test
 };
 
 export const getContract = (library, account, chainId) => {

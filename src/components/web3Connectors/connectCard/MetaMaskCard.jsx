@@ -4,7 +4,7 @@ import { Accounts } from '../Accounts'
 import { Chain } from '../Chain'
 import { ConnectWithSelect } from '../ConnectWithSelect'
 import { Status } from '../Status'
-import '../../App.css'
+import '../../../App.css'
 
 const { useChainId, useAccounts, useError, useIsActivating, useIsActive, useProvider, useENSNames } = hooks
 
@@ -26,9 +26,7 @@ export default function MetaMaskCard() {
   }, [])
 
   return (
-    <div
-    // style={{ "display": "'flex'", "flexDirection": "'column'", "justifyContent": "space-between", "minWidth": "'5000px'", "maxWidth": "'5000px'", "width": "'1000px'", "padding": "'1rem'", "margin": "'20px'", "overflow": "'auto'", "border": "'1px solid'", "borderRadius": "'1rem'" }}
-    >
+    <div >
       <div className="wallet-card">
         <h5>MetaMask</h5>
         <Status isActivating={isActivating} error={error} isActive={isActive} />
@@ -45,7 +43,6 @@ export default function MetaMaskCard() {
         error={error}
         isActive={isActive}
       />
-      {/* <h5>{console.log('MMchainId', chainId)}</h5> */}
     </div>
   )
 }

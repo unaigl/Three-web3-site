@@ -5,8 +5,6 @@ export function Chain(chainId) {
   if (chainId === undefined) return null
 
   const name = chainId ? CHAINS[chainId]?.name : undefined
-  // console.log('chainId', chainId.chainId)
-  // console.log('NAME', name)
 
   if (name) {
     return (

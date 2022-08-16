@@ -1,7 +1,7 @@
 import { coinbaseWallet, hooks } from '../connectors/coinbaseWallet'
 import { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import '../../App.css'
+import '../../../App.css'
 import Card from '../../game/outCanvas/card/Card'
 import { getContract } from "../../web3Connectors/transactionCards/contract"
 import { claimToken, burnToken } from './transaction'

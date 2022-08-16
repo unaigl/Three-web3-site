@@ -11,7 +11,7 @@ import WalletConnectCard from './connectCard/WalletConnectCard'
 import MetaMaskCard from './connectCard/MetaMaskCard'
 import { URLS } from "./chains";
 
-import "../App.css"
+import "../../App.css"
 
 function getName(connector) {
   if (connector instanceof MetaMask) return 'MetaMask'
@@ -23,14 +23,7 @@ function getName(connector) {
 
 export default function Web3ChildConnector() {
 
-  // este connector es equivalente a library
-  // este "connector" es un objeto Metamask  
   const { connector, chainId, error } = useWeb3React();
-  console.log(`Priority Connector is: ${getName(connector)}`);
-  // use WalletConnect object to listen handleChainChanged
-
-  // TODO errores
-  // const [errors, seterrors] = useState({ error: '' })
   const [errorMessage, seterrorMessage] = useState('')
   useEffect(() => {
     const fetchChainId = async () => {
@@ -56,8 +49,7 @@ export default function Web3ChildConnector() {
       className='wallet-modal'
     >
       <b style={{ bottom: '300px' }}>{errorMessage}</b>
-      <MetaMaskCard  // Todas las funcionalidades las sacaremos de los conectores, mediante hooks. Supongo que las biblios de las wallets se han
-      // desarrollado mas y mas
+      <MetaMaskCard
       />
       <br />
       <WalletConnectCard />

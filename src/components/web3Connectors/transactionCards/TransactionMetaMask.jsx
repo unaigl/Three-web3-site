@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import '../../App.css'
+import '../../../App.css'
 import Card from '../../game/outCanvas/card/Card'
 import { getContract } from "../../web3Connectors/transactionCards/contract"
 import { hooks, metaMask } from '../connectors/metaMask'
@@ -21,12 +21,6 @@ export default function TransactionMetaMask(props) {
     void metaMask.connectEagerly()
   }, [])
 
-  // TODO Que puedan dar a un boton para que se active el boton de claim. Hace falta el amount para cuando tienen 0 tokens
-  // TODO falla el burn, DEJE de pensar en el array de accounts, ya que en getSigner no queda claro, REVOSARLO
-  // let amount;
-  // if (props.tokens > 1) amount = props.tokens
-
-  // write To Contract Using Connectors Hooks
   const claimTokenTx = () => {
     claimToken(provider, accounts, chainId, /* amount || */ 1)
   }

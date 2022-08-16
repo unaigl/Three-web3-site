@@ -1,17 +1,8 @@
 import { useBox, } from '@react-three/cannon';
 import { useFrame } from '@react-three/fiber';
 import PropTypes from 'prop-types'
-import { useEffect } from 'react'
-// import { UtilsGameContext } from "../context/GameContext";
 
 const PlayerBox = (props) => {
-	// const utils = useContext(UtilsGameContext);
-
-	// let scores: (string | number)[];
-	// scores = [ref, api];
-
-	// var ref = useRef<MutableRefObject<RefObject<Object3D<Event>> | undefined>>();
-	// var api = useRef<MutableRefObject<PublicApi | undefined>>();
 
 	const [ref, api] = useBox(() => ({
 		mass: 0,
@@ -21,11 +12,8 @@ const PlayerBox = (props) => {
 		collisionFilterGroup: 1,
 		// 1 PlayerBox 2 Objetive 3 BulletBox 4 Attackers
 		collisionFilterMask: 4,
-		onCollide: (e) => {
-			// if (e.collisionFilters.bodyFilterGroup == 4)
+		onCollide: () => {
 			props.gameover.setgameover(true)
-			// window.scrollTo(0, 0.5 * window.innerHeight);
-			// console.log(props.gameover.gameover);
 			props.setplay(false);
 			setTimeout(() => {
 				props.gameover.setgameover(false)
@@ -34,7 +22,7 @@ const PlayerBox = (props) => {
 		},
 	}));
 
-	// Tambien simula el movimiento de la camara (y por lo tnato el del objetivo), para poder tener un collider para el game over
+	// Tambien simula el movimiento de la camara (y por lo tanto el del objetivo)
 	useFrame(() => {
 		api.position.set(props.move.x, props.move.y, props.move.z);
 	});
@@ -43,7 +31,6 @@ const PlayerBox = (props) => {
 		<>
 			<mesh ref={ref}>
 				<boxBufferGeometry attach='geometry' args={[1, 1, 1]} />
-				{/* <meshStandardMaterial /> */}
 			</mesh>
 		</>
 	);

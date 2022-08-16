@@ -14,7 +14,6 @@ const Attackers = (props) => {
 		mass: 0,
 		position: [props.pos.x, props.pos.y, props.pos.z - 200],
 		type: 'Dynamic',
-		// args: [1, 1, 1],
 		// 1 PlayerBox 2 Objetive 3 BulletBox 4 Attackers
 		collisionFilterGroup: 4,
 		// No te va a colisionar, sino que vas a colisionar contra el
@@ -36,7 +35,6 @@ const Attackers = (props) => {
 			window.setTimeout(() => {
 				zMovement = -50;
 				api.position.set(0, 0, -zMovement);
-				// 6 segs * i * wait= posicion de cada cubo para hacer que algunos salgan antes que otros
 			}, 6 * 1000 + props.wait * 100);
 		}
 	}

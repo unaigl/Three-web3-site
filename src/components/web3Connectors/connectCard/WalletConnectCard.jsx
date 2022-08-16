@@ -6,7 +6,7 @@ import { ConnectWithSelect } from '../ConnectWithSelect'
 import { Status } from '../Status'
 
 
-import '../../App.css'
+import '../../../App.css'
 
 
 const { useChainId, useAccounts, useError, useIsActivating, useIsActive, useProvider, useENSNames } = hooks

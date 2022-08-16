@@ -5,7 +5,7 @@ import { EIP1193 } from "@web3-react/eip1193";
 import { URLS } from "../../chains";
 
 class Eip1193BridgeWithoutAccounts extends Eip1193Bridge {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   request(request) {
     if (
       request.method === "eth_requestAccounts" ||
@@ -16,7 +16,7 @@ class Eip1193BridgeWithoutAccounts extends Eip1193Bridge {
   }
 }
 
-const ethersProvider = new JsonRpcProvider(URLS[1][0], 1); // [1] lo busca por nombre de propiedad dentro del objeto URLS, y el [0] busca la posicion en el valor de la propiedad 1 (que es un array)
+const ethersProvider = new JsonRpcProvider(URLS[1][0], 1);
 const eip1193Provider = new Eip1193BridgeWithoutAccounts(
   ethersProvider.getSigner(),
   ethersProvider

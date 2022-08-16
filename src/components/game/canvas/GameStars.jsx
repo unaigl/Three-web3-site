@@ -13,9 +13,6 @@ const GameStars = () => {
 		ref.current.rotation.y += 0.001
 		ref2.current.rotation.y -= 0.0005
 	})
-
-
-	// TODO WinText component
 	return (
 		<>
 			<Stars
@@ -27,8 +24,6 @@ const GameStars = () => {
 				saturation={0.9}
 				fade
 				speed={1}
-				/** Color of particles (default: 100) */
-				// color?: THREE.ColorRepresentation | Float32Array   ->>> https://github.com/pmndrs/drei#stars
 				color={3}
 			/>
 			<Stars
@@ -40,8 +35,6 @@ const GameStars = () => {
 				saturation={0.9}
 				fade
 				speed={1}
-				/** Color of particles (default: 100) */
-				// color?: THREE.ColorRepresentation | Float32Array   ->>> https://github.com/pmndrs/drei#stars
 				color={3}
 			/>
 		</>

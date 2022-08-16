@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { useFrame, useLoader } from '@react-three/fiber';
 
 const Spawner = (props) => {
-	// TODO No permite usar los valores de useContext fuera del componente Spawner. Y si esta dentro, no permite exportarlo
-
 	// Random number between
 	function randomIntBetween(min, max) { // min and max included 
 		return Math.floor(Math.random() * (max - min + 1) + min)

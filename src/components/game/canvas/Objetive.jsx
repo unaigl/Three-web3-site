@@ -17,28 +17,17 @@ const Objetive = (props) => {
 		// 1 PlayerBox 2 Objetive 3 BulletBox 4 Attackers
 		collisionFilterGroup: 2,
 		collisionFilterMask: 3,
-		// or using "e.collisionFilters.bodyFilterGroup == 3 " inside if statement
 		onCollideBegin: () => {
 			if (hasStart) {
-				// console.log('win');
 				props.setplay(false);
 				props.setwin(true);
 				props.settokens(true);
-
-				// SET TOKEN, NO FUNCIONA
-				// props.setcounter(props.counter + 1)
-				// props.tokens.settokens(props.tokens.tokens + 2);
-
-				// FINISH WIN
 				setTimeout(() => {
 					props.setwin(false);
 				}, 1000);
 
 			}
 		}
-
-		// onCollide: (e) => {
-		// },
 	}));
 
 	// para evitar las collisiones que se generan al cargar

@@ -4,12 +4,11 @@ import PropTypes from 'prop-types';
 import Modal from './modals/Modal';
 import PlayModal from './modals/PlayModal';
 
-import '../../App.css';
+import '../../../App.css';
 
-// REACT elemts OUT of the CANVAS // Podemos usar useContext aqui o pasar los valores por props (usaremos este ulgimo en este caso)
+// REACT elemts OUT of the CANVAS 
 export default function OutCanvasMenu(props) {
 
-	// DELETED, MOVED TO CONTEXT, const [modalIsOpen, setmodalIsOpen] = useState(false)
 	const [playModalIsOpen, setplayModalIsOpen] = useState(false)
 
 	return (
@@ -25,7 +24,6 @@ export default function OutCanvasMenu(props) {
 						}}>
 						How to play
 					</button>
-
 					<button
 						className='col-md-3 btn btn-outline-dark btn-md game-info-text'
 						onClick={() => props.setbuttonOpenModal(true)}
@@ -33,21 +31,15 @@ export default function OutCanvasMenu(props) {
 						style={{
 							width: '150px'
 						}}>
-						{/* {!wallet ? 'Connect Wallet' : 'Disconnect'} */}
 						Your Wallets
 					</button>
-
 					<div className="col-md-3" >
 						{playModalIsOpen && <PlayModal playModalIsOpen={playModalIsOpen} onClose={() => setplayModalIsOpen(false)} />}
 					</div>
 
-					<div className="col-md-3" /* style={{ background: 'white' }} */>
+					<div className="col-md-3" >
 						{props.buttonOpenModal && <Modal modalIsOpen={props.buttonOpenModal} onClose={() => props.setbuttonOpenModal(false)} />}
 					</div>
-
-
-
-
 				</fieldset>
 			</div>
 

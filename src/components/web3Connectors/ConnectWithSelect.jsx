@@ -6,7 +6,7 @@ import { WalletConnect } from '@web3-react/walletconnect'
 import { useCallback, useState } from 'react'
 import { CHAINS, getAddChainParameters, URLS } from './chains'
 
-import '../App.css'
+import '../../App.css'
 
 function Select({
   chainId,
@@ -16,7 +16,6 @@ function Select({
 }) {
   return (
     <div className="col-md-8 form-group justify-content-center">
-      {/* <label htmlFor="exampleSelect1" className="form-label mt-4 ">Example select</label> */}
       <select
         className="form-select select-menu"
         id="exampleSelect1"
@@ -68,7 +67,6 @@ export function ConnectWithSelect({
   )
 
   if (error) {
-    // console.log('ERRRROOOOOORRRRRRRRRR', error)
     return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Select
@@ -86,7 +84,6 @@ export function ConnectWithSelect({
               : void connector.activate(desiredChainId === -1 ? undefined : getAddChainParameters(desiredChainId))
           }
         >
-          {/* Try Again? */}
           Connect
         </button>
       </div>

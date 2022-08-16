@@ -10,8 +10,6 @@ export function Status({
       {error ? (
         <>
           🔴 You has denied
-          {/* {error.name ?? 'Error'}
-          {error.message ? `: ${error.message}` : null} */}
         </>
       ) : isActivating ? (
         <>🟡 Connecting</>

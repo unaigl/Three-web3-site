@@ -41,7 +41,6 @@ const BulletBox = (props) => {
 				isShoot = false;
 				increase = 1.05;
 				api.position.set(0, 0, 0);
-				// props.collide = false;
 			}, 2000);
 		}
 	};
@@ -53,7 +52,7 @@ const BulletBox = (props) => {
 	return (
 		<mesh ref={ref} onClick={shootBox} onPointerEnter={SetBigger} onPointerOut={() => setsize(1)} >
 			<sphereGeometry attach='geometry' args={[size, 32, 32]} />
-			<meshStandardMaterial /* color={defaultColor} */ map={colorMap} />
+			<meshStandardMaterial map={colorMap} />
 		</mesh>
 	);
 };

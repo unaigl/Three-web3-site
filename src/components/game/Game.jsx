@@ -5,7 +5,7 @@ import { Web3ReactProvider } from '@web3-react/core';
 import * as React from "react";
 import { Suspense } from 'react';
 // Mine
-import '../App.css';
+import '../../App.css';
 import { utilsGameContext, UtilsGameContextProvider } from '../context/GameContext';
 import { Lights } from '../light/Lights';
 import BulletBox from './canvas/BulletBox';
@@ -23,22 +23,6 @@ import Objetive from './canvas/Objetive';
 import OutFooter from './outCanvas/OutFooter';
 import PlayerBox from './canvas/PlayerBox';
 import Spawner from './canvas/Spawner';
-// import Web3MineProvider from '../web3Connectors/Web3MineProvider';
-
-// SUGERENCIAS
-// Se puede hacer MAS FACIL CON NUMEROS, COMO ESTADO, 1 EN PAUSA, 2 JUGAR, 3 VICTORIA, 4 gameover
-// rojo x, verde y, azul z
-
-// FUNCIONAMIENTO
-// Juego con fisicas pero sin recorrido de "camera" en base a scroll. La camera se movera con el movimiento del mouse
-// Utilizaremos useState, ya que useContext no funciona bien dentro del elemento "canvas" de "fiber"
-
-// El texto ira fuera del canvas, ya que al usar "Physics" de "cannon", al poner el mouse encima del html, se vuelve loco
-// TODO resuelto. Al final, utilizando useContext se ha solucionado el problema. Antes tenia en el componente principal declarados los valores con useState
-// y no me dejaba pasarlos al componente htmlOutCanvas sin que se volviera loco
-
-// Si no se ponen los elementos html dentro del "Suspense", se vuelve loca la pantallla
-// Le pasamos el context por props, ya que el canvas de fiber no funciona bien con useContext
 
 const Game = () => {
 
@@ -85,11 +69,9 @@ const Game = () => {
 											/>
 											<color attach='background' args={['#080101']} />
 											<Lights />
-											{/* {gameUtils.arePlaying.play && <fog attach='fog' args={['#232625', 0, 60]} />} */}
-
+											{/* {gameUtils.arePlaying.play && <fog attach='fog' args={['#232625', 0, 60]} // FOG />} */}
 											{gameUtils.gameover.gameover && <HtmlCanvas> GAMEOVER </HtmlCanvas>}
 											{gameUtils.hasWin.win && <HtmlCanvas> WINNER </HtmlCanvas>}
-
 											<CameraRig setmove={gameUtils.cameraMovement.setmove} />
 											{/* <Html position={[-6.5, 7, 0]} className="text-play">HIT TO PLAY</Html>
             										<Html position={[-5.5, 7, 0]} className="text-play">HIT TO PAUSE</Html> */}
@@ -107,18 +89,13 @@ const Game = () => {
 													setcounter={gameUtils.counter.setcounter}
 													settokens={gameUtils.tokens.settokens}
 												/>
-
-
 												<Spawner play={gameUtils.arePlaying.play} setplay={gameUtils.arePlaying.setplay} />
-
 												<MenuPlay arePlaying={gameUtils.arePlaying} gameover={gameUtils.gameover} setwin={gameUtils.hasWin.setwin} />
 												<MenuPause arePlaying={gameUtils.arePlaying} counter={gameUtils.counter} />
-
 											</Physics>
-
 											<GameStars />
 										</Canvas>
-										{/* </div> */}
+
 										<Web3ReactProvider connectors={connectors}>
 											<OutFooter arePlaying={gameUtils.arePlaying} tokens={gameUtils.tokens.tokens}
 												setcounter={gameUtils.counter.setcounter}
@@ -127,16 +104,12 @@ const Game = () => {
 											/>
 										</Web3ReactProvider>
 
-										{/* <Footer /> Out of Canvas */}
 									</Suspense>
 								</>
 							);
 						}}
-
 					</utilsGameContext.Consumer>
 				</UtilsGameContextProvider>
-
-
 			</div>
 		</div>
 	);

@@ -8,7 +8,6 @@ function CameraRig(props) {
 	const vec = new Vector3();
 	const { camera, mouse } = useThree();
 	useFrame(() => {
-		// este vector "vec", en su parametro z es el que hace que la camara este constantemente en el 7.
 		camera.position.lerp(vec.set(mouse.x * 3, mouse.y * 3, 7), 0.05);
 		props.setmove(camera.position);
 	});

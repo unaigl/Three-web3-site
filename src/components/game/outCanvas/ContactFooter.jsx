@@ -6,8 +6,7 @@ import {
 import { FaLinkedinIn } from "react-icons/fa";
 import { SiBuffer } from "react-icons/si";
 
-import '../../App.css';
-
+import '../../../App.css';
 
 const OutCanvasFooter = (props) => {
 

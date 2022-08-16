@@ -11,7 +11,7 @@ import { hooks as metaMaskHooks, metaMask } from '../../web3Connectors/connector
 import { hooks as networkHooks, network } from '../../web3Connectors/connectors/network';
 import { hooks as walletConnectHooks, walletConnect } from '../../web3Connectors/connectors/walletConnect';
 
-import '../../App.css';
+import '../../../App.css';
 import Card from './card/Card'
 import ContactFooter from "./ContactFooter";
 
@@ -19,29 +19,9 @@ import ContactFooter from "./ContactFooter";
 
 const OutCanvasFooter = (props) => {
 
-    // Sin useEffect daba el siguiente Warning: Cannot update a component To locate the bad setState() call inside OutCanvasFooter
     useEffect(() => {
         props.setcounter(0);
-        // console.log('web3reactContextweb3reactContext', web3reactContext.chainId)
     }, []);
-
-    // TODO tendria que conseguir el library de react-web3-provider (que acutalmente no lo uso), se estan utilizando directamente hooks de los connectores 
-    // que es library? me parece que es del tipo -> Web3Provider
-    // Me ha permitido utilizar provider en lugar de library, para -> "provider.getSigner(account).connectUnchecked()" YES, ambos son un Web3Provider
-
-    // Escribe en el contrato de la CHAIN en la que esta
-    // TODO MIERCOLES, esta haciendo la transaccion con la 1era wallet que pilla, la que estara en el [0] en el array de wallets de ethers?
-    // TODO Siemrpe sera la wallet 0 la que firme
-    // hay que revisar
-
-    // const cards = [
-    //     ['/cardPhotos/metamask.jpg', <> <p>Coinbase Wallet! You can change chain using this web interface. </p>
-    //         <b>Is posible also using Coinbase Wallet?</b></>],
-    //     ['/cardPhotos/coinbase.jpg', <> <p>Coinbase Wallet! You can change chain using this web interface. </p>
-    //         <b>Is posible also using Coinbase Wallet?</b></>],
-    //     ['/cardPhotos/walletConnect.jpg', <><p>Wallet Connect! You can change chain using this web interface.</p>
-    //         <b>TODO ...</b></>],
-    // ]
 
     return (
         <>
