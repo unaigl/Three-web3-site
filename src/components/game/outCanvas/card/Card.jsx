@@ -23,7 +23,8 @@ const Card = (props) => {
                         </div>
                         <small>How to use
                             <a href={props.url}
-                                target='_blank' rel='noopener noreferrer'>{props.urlText}</a></small>
+                                target='_blank' rel='noopener noreferrer'>{props.urlText}</a>
+                        </small>
                     </div>
                     <ul className="sci">
                         <li>
