@@ -21,6 +21,10 @@ function Select({
         id="exampleSelect1"
         value={chainId}
         onChange={(event) => {
+
+
+
+
           switchChain?.(Number(event.target.value))
         }}
         disabled={switchChain === undefined}
@@ -51,6 +55,7 @@ export function ConnectWithSelect({
 
   const switchChain = useCallback(
     async (desiredChainId) => {
+
       setDesiredChainId(desiredChainId)
       // if we're already connected to the desired chain, return
       if (desiredChainId === chainId) return

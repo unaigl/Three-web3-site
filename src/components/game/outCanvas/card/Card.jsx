@@ -8,7 +8,7 @@ import './Card.css'
 const Card = (props) => {
 
     const openModal = () => {
-        scrollTo(0, 190)
+        scrollTo(0, 0)
         props.setbuttonOpenModal(true)
         console.log('Connect your wallet and try again.');
     }

@@ -40,12 +40,12 @@ const OutCanvasFooter = (props) => {
                                             target='_blank' rel='noopener noreferrer'>{`  check it out`}</a>
                                     </small>
                                     <p>Mumbai (Polygon testnet)</p>
-                                    <small>0x6Ec4c5Ce6cC67729d89785f715e103e5981C9780
+                                    {/* <small>0x6Ec4c5Ce6cC67729d89785f715e103e5981C9780
                                         <br />
                                         <a href={'https://testnet.bscscan.com/address/0x6Ec4c5Ce6cC67729d89785f715e103e5981C9780'}
                                             target='_blank' rel='noopener noreferrer'>{`  check it out`}</a>
                                     </small>
-                                    <p>BSC testnet</p>
+                                    <p>BSC testnet</p> */}
                                     <p>Claim or Burn ONE token for each transaction</p>
                                     <small>Select a wallet</small>
                                 </div>

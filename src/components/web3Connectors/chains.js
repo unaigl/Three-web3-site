@@ -9,6 +9,11 @@ const MATIC = {
 	symbol: 'MATIC',
 	decimals: 18,
 };
+const BNB = {
+	name: 'Binance',
+	symbol: 'BNB',
+	decimals: 18,
+};
 
 function isExtendedChainInformation(chainInformation) {
 	return !!chainInformation.nativeCurrency;
@@ -29,8 +34,22 @@ export function getAddChainParameters(chainId) {
 	}
 }
 
+/* 
+Ethereum :"0x1",
+Local Chain :"0x539",
+Ropsten Testnet :"0x3",
+Rinkeby Testnet :"0x4",
+Kovan Testnet :"0x2a",
+Goerli Testnet :"0x5",
+Binance :"0x38",
+Smart Chain Testnet :"0x61",
+Polygon :"0x89",
+Mumbai :"0x13881",
+Avalanche" : "0xa86a",
+ */
+
 export const CHAINS = {
-	/* 1: {
+	1: {
 		urls: [
 			import.meta.env.VITE_APP_INFURA_KEY
 				? `https://mainnet.infura.io/v3/${
@@ -45,7 +64,7 @@ export const CHAINS = {
 			'https://cloudflare-eth.com',
 		].filter((url) => url !== undefined),
 		name: 'Mainnet',
-	}, */
+	},
 	3: {
 		urls: [
 			import.meta.env.VITE_APP_INFURA_KEY
@@ -76,6 +95,7 @@ export const CHAINS = {
 		].filter((url) => url !== undefined),
 		name: 'Görli',
 	},
+	// Kovan
 	42: {
 		urls: [
 			import.meta.env.VITE_APP_INFURA_KEY
@@ -94,11 +114,14 @@ export const CHAINS = {
 						import.meta.env.VITE_APP_INFURA_KEY
 				  }`
 				: undefined,
+			// 'https://mainnet.optimism.io',
 		],
+		// .filter((url) => url !== undefined),
 		name: 'Optimism',
 		nativeCurrency: ETH,
 		blockExplorerUrls: ['https://optimistic.etherscan.io'],
 	},
+	// Optimism Kovan
 	69: {
 		urls: [
 			import.meta.env.VITE_APP_INFURA_KEY
@@ -106,7 +129,9 @@ export const CHAINS = {
 						import.meta.env.VITE_APP_INFURA_KEY
 				  }`
 				: undefined,
+			// 'https://kovan.optimism.io',
 		],
+		// .filter((url) => url !== undefined),
 		name: 'Optimism Kovan',
 		nativeCurrency: ETH,
 		blockExplorerUrls: ['https://kovan-optimistic.etherscan.io'],
@@ -125,6 +150,7 @@ export const CHAINS = {
 		nativeCurrency: ETH,
 		blockExplorerUrls: ['https://arbiscan.io'],
 	},
+	// Arbitrum Rinkeby
 	421611: {
 		urls: [
 			import.meta.env.VITE_APP_INFURA_KEY
@@ -152,30 +178,41 @@ export const CHAINS = {
 		nativeCurrency: MATIC,
 		blockExplorerUrls: ['https://polygonscan.com'],
 	},
+	// MUMBAI
 	80001: {
+		// TODO modificado
 		urls: [
-			`https://speedy-nodes-nyc.moralis.io/ef66cc6d4d85140fd7994b1d/polygon/mumbai`,
-		],
+			import.meta.env.VITE_APP_INFURA_KEY
+				? `https://polygon-mumbai.infura.io/v3/${
+						import.meta.env.VITE_APP_INFURA_KEY
+				  }`
+				: undefined,
+		].filter((url) => url !== undefined),
+		// urls: [
+		// 	`https://speedy-nodes-nyc.moralis.io/ef66cc6d4d85140fd7994b1d/polygon/mumbai`,
+		// ],
 		name: 'Polygon Mumbai',
 		nativeCurrency: MATIC,
 		blockExplorerUrls: ['https://mumbai.polygonscan.com'],
 	},
 	// BINANCE TESTNET
-	97: {
-		urls: 'https://data-seed-prebsc-1-s1.binance.org:8545',
+	/* 97: {
+		urls: 'https://data-seed-prebsc-2-s3.binance.org:8545/',
+		// urls: 'https://data-seed-prebsc-1-s1.binance.org:8545',
 		name: 'Binance Testnet',
-		nativeCurrency: MATIC,
-		blockExplorerUrls: ['https://polygonscan.com'],
+		nativeCurrency: BNB,
+		blockExplorerUrls: ['https://testnet.bscscan.com/'],
 	},
 	// BINANCE MAIN
 	56: {
-		urls: `https://binance-mainnet.infura.io/v3/${
-			import.meta.env.VITE_APP_INFURA_KEY.INFURA_KEY
-		}`,
+		urls: 'https://bsc-dataseed1.defibit.io/',
+		// urls: `https://binance-mainnet.infura.io/v3/${
+		// 	import.meta.env.VITE_APP_INFURA_KEY.INFURA_KEY
+		// }`,
 		name: 'Binance Mainnet',
-		nativeCurrency: MATIC,
-		blockExplorerUrls: ['https://mumbai.polygonscan.com'],
-	},
+		nativeCurrency: BNB,
+		blockExplorerUrls: ['https://bscscan.com/'],
+	}, */
 };
 
 export const URLS = Object.keys(CHAINS).reduce((accumulator, chainId) => {
@@ -187,3 +224,7 @@ export const URLS = Object.keys(CHAINS).reduce((accumulator, chainId) => {
 
 	return accumulator;
 }, {});
+
+// (() => {
+// 	console.log('URLS', URLS);
+// })();

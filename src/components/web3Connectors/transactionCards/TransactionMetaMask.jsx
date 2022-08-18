@@ -7,6 +7,7 @@ import { getContract } from "../../web3Connectors/transactionCards/contract"
 import { hooks, metaMask } from '../connectors/metaMask'
 import { claimToken, burnToken } from './transaction'
 
+import Modal from '../../game/outCanvas/modals/Modal'
 
 export default function TransactionMetaMask(props) {
 
@@ -22,26 +23,42 @@ export default function TransactionMetaMask(props) {
   }, [])
 
   const claimTokenTx = () => {
-    claimToken(provider, accounts, chainId, /* amount || */ 1)
+    if (chainId === 97 || chainId === 80001) {
+      claimToken(provider, accounts, chainId, /* amount || */ 1)
+    } else {
+      scrollTo(0, 0)
+      props.setbuttonOpenModal(true)
+      alert('Currently tokens are only available in BSC or Polygon Testnets')
+    }
   }
   const burnTokenTx = () => {
-    burnToken(provider, accounts, chainId, 1)
+    if (chainId === 97 || chainId === 80001) {
+      burnToken(provider, accounts, chainId, 1)
+    } else {
+      scrollTo(0, 0)
+      props.setbuttonOpenModal(true)
+      alert('Currently tokens are only available in BSC or Polygon Testnets')
+    }
+
   }
 
   return (
-    <Card
-      accounts={accounts}
-      setbuttonOpenModal={props.setbuttonOpenModal}
-      buttonOpenModal={props.buttonOpenModal}
-      disabled={props.tokens}
-      buttonContent={'Claim'}
-      buttonTwoContent={'Burn'}
-      claim={claimTokenTx}
-      burn={burnTokenTx}
-      photo={'/cardPhotos/metamask.jpg'}
-      url={'https://dev.to/metamask/a-guide-to-metamask-ecosystem-leading-ethereum-blockchain-wallet-59k7'}
-      urlText={' Metamask'}
-    />
+    <>
+      {props.buttonOpenModal && <Modal />}
+      <Card
+        accounts={accounts}
+        setbuttonOpenModal={props.setbuttonOpenModal}
+        buttonOpenModal={props.buttonOpenModal}
+        disabled={props.tokens}
+        buttonContent={'Claim'}
+        buttonTwoContent={'Burn'}
+        claim={claimTokenTx}
+        burn={burnTokenTx}
+        photo={'/cardPhotos/metamask.jpg'}
+        url={'https://dev.to/metamask/a-guide-to-metamask-ecosystem-leading-ethereum-blockchain-wallet-59k7'}
+        urlText={' Metamask'}
+      />
+    </>
   )
 }
 TransactionMetaMask.prototype = {
