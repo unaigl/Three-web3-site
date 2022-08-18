@@ -34,7 +34,7 @@ export function getAddChainParameters(chainId) {
 	}
 }
 
-/* 
+/*  HEXADECIMAL
 Ethereum :"0x1",
 Local Chain :"0x539",
 Ropsten Testnet :"0x3",
@@ -180,7 +180,6 @@ export const CHAINS = {
 	},
 	// MUMBAI
 	80001: {
-		// TODO modificado
 		urls: [
 			import.meta.env.VITE_APP_INFURA_KEY
 				? `https://polygon-mumbai.infura.io/v3/${
@@ -195,24 +194,24 @@ export const CHAINS = {
 		nativeCurrency: MATIC,
 		blockExplorerUrls: ['https://mumbai.polygonscan.com'],
 	},
-	// BINANCE TESTNET
-	/* 97: {
-		urls: 'https://data-seed-prebsc-2-s3.binance.org:8545/',
-		// urls: 'https://data-seed-prebsc-1-s1.binance.org:8545',
-		name: 'Binance Testnet',
-		nativeCurrency: BNB,
-		blockExplorerUrls: ['https://testnet.bscscan.com/'],
-	},
 	// BINANCE MAIN
 	56: {
-		urls: 'https://bsc-dataseed1.defibit.io/',
+		urls: 'https://bsc-dataseed.binance.org/',
 		// urls: `https://binance-mainnet.infura.io/v3/${
 		// 	import.meta.env.VITE_APP_INFURA_KEY.INFURA_KEY
 		// }`,
 		name: 'Binance Mainnet',
 		nativeCurrency: BNB,
 		blockExplorerUrls: ['https://bscscan.com/'],
-	}, */
+	},
+	// BINANCE TESTNET
+	97: {
+		urls: 'https://data-seed-prebsc-1-s3.binance.org:8545/',
+		// urls: 'https://data-seed-prebsc-1-s1.binance.org:8545',
+		name: 'Binance Testnet',
+		nativeCurrency: BNB,
+		blockExplorerUrls: ['https://testnet.bscscan.com/'],
+	},
 };
 
 export const URLS = Object.keys(CHAINS).reduce((accumulator, chainId) => {
@@ -224,7 +223,3 @@ export const URLS = Object.keys(CHAINS).reduce((accumulator, chainId) => {
 
 	return accumulator;
 }, {});
-
-// (() => {
-// 	console.log('URLS', URLS);
-// })();
