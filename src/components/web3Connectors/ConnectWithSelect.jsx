@@ -21,10 +21,6 @@ function Select({
         id="exampleSelect1"
         value={chainId}
         onChange={(event) => {
-
-
-
-
           switchChain?.(Number(event.target.value))
         }}
         disabled={switchChain === undefined}

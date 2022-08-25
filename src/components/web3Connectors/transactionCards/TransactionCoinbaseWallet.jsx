@@ -22,10 +22,22 @@ export default function TransactionCoinbaseWallet(props) {
   }, [])
 
   const claimTokenTx = () => {
-    claimToken(provider, accounts, chainId, /* amount || */ 1)
+    if (chainId === 97 || chainId === 80001) {
+      claimToken(provider, accounts, chainId, /* amount || */ 1)
+    } else {
+      scrollTo(0, 0)
+      props.setbuttonOpenModal(true)
+      alert('Currently tokens are only available in BSC or Polygon Testnets')
+    }
   }
   const burnTokenTx = () => {
-    burnToken(provider, accounts, chainId, 1)
+    if (chainId === 97 || chainId === 80001) {
+      burnToken(provider, accounts, chainId, 1)
+    } else {
+      scrollTo(0, 0)
+      props.setbuttonOpenModal(true)
+      alert('Currently tokens are only available in BSC or Polygon Testnets')
+    }
   }
 
   return (

@@ -28,7 +28,7 @@ const PlayModal = ({ playModalIsOpen, onClose }) => {
                 x: 0
             },
             {
-                y: -620,
+                y: -500,
                 x: window.innerWidth / 10,
                 duration: 0.5,
             }

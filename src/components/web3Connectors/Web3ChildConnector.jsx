@@ -13,14 +13,6 @@ import { URLS } from "./chains";
 
 import "../../App.css"
 
-function getName(connector) {
-  if (connector instanceof MetaMask) return 'MetaMask'
-  if (connector instanceof WalletConnect) return 'WalletConnect'
-  if (connector instanceof CoinbaseWallet) return 'Coinbase Wallet'
-  if (connector instanceof Network) return 'Network'
-  return 'Unknown'
-}
-
 export default function Web3ChildConnector() {
 
   const { connector, chainId, error } = useWeb3React();

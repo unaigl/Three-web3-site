@@ -39,7 +39,6 @@ export default function TransactionMetaMask(props) {
       props.setbuttonOpenModal(true)
       alert('Currently tokens are only available in BSC or Polygon Testnets')
     }
-
   }
 
   return (

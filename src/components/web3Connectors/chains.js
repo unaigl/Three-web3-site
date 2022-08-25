@@ -34,18 +34,27 @@ export function getAddChainParameters(chainId) {
 	}
 }
 
-/*  HEXADECIMAL
-Ethereum :"0x1",
-Local Chain :"0x539",
-Ropsten Testnet :"0x3",
-Rinkeby Testnet :"0x4",
-Kovan Testnet :"0x2a",
-Goerli Testnet :"0x5",
-Binance :"0x38",
-Smart Chain Testnet :"0x61",
-Polygon :"0x89",
-Mumbai :"0x13881",
-Avalanche" : "0xa86a",
+/*  CHAINS
+			Decimal		hex	*(same)
+	eth			1		*
+	eth classic	2		*
+	ropsten		3		*
+	rinkeby 	4		*
+	Gorli		5		*
+	kovan		42		
+	bsc			56		38
+	bsc t		97
+	polygon		137		89
+	mumbai		80001
+	optimism	10		A
+	optimism t 	69
+	arbitrum	42161	A4B1
+	arbitrum t	421611
+	avax fuji	43113		
+	avax		43114	A86A
+	Fantom		250		FA
+	cronos		25		19
+	gnosis		100		64
  */
 
 export const CHAINS = {
@@ -206,7 +215,7 @@ export const CHAINS = {
 	},
 	// BINANCE TESTNET
 	97: {
-		urls: 'https://data-seed-prebsc-1-s3.binance.org:8545/',
+		urls: 'https://data-seed-prebsc-2-s1.binance.org:8545/',
 		// urls: 'https://data-seed-prebsc-1-s1.binance.org:8545',
 		name: 'Binance Testnet',
 		nativeCurrency: BNB,

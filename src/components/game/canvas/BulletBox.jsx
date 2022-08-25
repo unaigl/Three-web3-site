@@ -24,7 +24,7 @@ const BulletBox = (props) => {
 
 
 	let isShoot = false;
-	let increase = 1.05;
+	let increase = 1.08;
 
 	useFrame(() => {
 		api.rotation.set(0 + 0.005, 0 + 0.01, 0);
@@ -41,7 +41,7 @@ const BulletBox = (props) => {
 				isShoot = false;
 				increase = 1.05;
 				api.position.set(0, 0, 0);
-			}, 2000);
+			}, 2500);
 		}
 	};
 
