@@ -2,9 +2,7 @@ import { Physics } from '@react-three/cannon';
 import { CameraShake, OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { Web3ReactProvider } from '@web3-react/core';
-import * as React from "react";
 import { Suspense } from 'react';
-// Mine
 import '../../App.css';
 import { utilsGameContext, UtilsGameContextProvider } from '../context/GameContext';
 import { Lights } from '../light/Lights';

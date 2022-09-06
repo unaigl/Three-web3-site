@@ -1,9 +1,6 @@
 import { useBox } from '@react-three/cannon';
 import { useFrame } from '@react-three/fiber';
 import propTypes from 'prop-types';
-import { useState, useEffect } from 'react'
-// import { UtilsGameContext } from "../context/GameContext";
-
 
 const Objetive = (props) => {
 

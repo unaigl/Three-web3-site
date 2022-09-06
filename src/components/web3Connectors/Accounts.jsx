@@ -1,7 +1,6 @@
-import { BigNumber } from '@ethersproject/bignumber'
 import { formatEther } from '@ethersproject/units'
-import { Web3ReactHooks } from '@web3-react/core'
 import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 
 function useBalances(
   provider,

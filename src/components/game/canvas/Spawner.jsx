@@ -1,7 +1,6 @@
 import { Vector3 } from 'three';
 import Attackers from './Attackers';
 import PropTypes from 'prop-types';
-import { useFrame, useLoader } from '@react-three/fiber';
 
 const Spawner = (props) => {
 	// Random number between

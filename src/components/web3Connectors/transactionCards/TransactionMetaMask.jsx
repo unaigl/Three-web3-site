@@ -1,11 +1,10 @@
-import { useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useEffect } from 'react'
 
 import '../../../App.css'
 import Card from '../../game/outCanvas/card/Card'
-import { getContract } from "../../web3Connectors/transactionCards/contract"
 import { hooks, metaMask } from '../connectors/metaMask'
-import { claimToken, burnToken } from './transaction'
+import { burnToken, claimToken } from './transaction'
 
 import Modal from '../../game/outCanvas/modals/Modal'
 

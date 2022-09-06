@@ -1,10 +1,9 @@
-import { hooks, walletConnect } from '../connectors/walletConnect'
-import { useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useEffect } from 'react'
 import '../../../App.css'
 import Card from '../../game/outCanvas/card/Card'
-import { getContract } from "../../web3Connectors/transactionCards/contract"
-import { claimToken, burnToken } from './transaction'
+import { hooks, walletConnect } from '../connectors/walletConnect'
+import { burnToken, claimToken } from './transaction'
 
 
 export default function TransactionWalletConnect(props) {

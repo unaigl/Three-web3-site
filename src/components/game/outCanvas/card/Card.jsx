@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 import Modal from '../modals/Modal'
 
@@ -66,6 +65,8 @@ Card.propTypes = {
     setbuttonOpenModal: PropTypes.func,
     buttonOpenModal: PropTypes.bool,
     accounts: PropTypes.array,
+    url: PropTypes.array,
+    urlText: PropTypes.array,
 }
 
 export default Card

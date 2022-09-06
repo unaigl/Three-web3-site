@@ -1,4 +1,5 @@
 import './spinner.css';
+import PropTypes from "prop-types"
 
 export default function Spinner(props) {
     return (
@@ -6,4 +7,7 @@ export default function Spinner(props) {
             <div className="spinner">{props.children}</div>
         </div>
     );
+}
+Spinner.propTypes = {
+    children: PropTypes.node
 }

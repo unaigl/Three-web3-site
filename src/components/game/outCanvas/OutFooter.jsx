@@ -1,18 +1,11 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react'
-import { useWeb3React } from "@web3-react/core";
-import { getContract } from "../../web3Connectors/transactionCards/contract";
-import TransactionMetaMask from "../../web3Connectors/transactionCards/TransactionMetaMask";
+import { useEffect } from 'react';
 import TransactionCoinbaseWallet from "../../web3Connectors/transactionCards/TransactionCoinbaseWallet";
+import TransactionMetaMask from "../../web3Connectors/transactionCards/TransactionMetaMask";
 import TransactionWalletConnect from "../../web3Connectors/transactionCards/TransactionWalletConnect";
 
-import { coinbaseWallet, hooks as coinbaseWalletHooks } from '../../web3Connectors/connectors/coinbaseWallet';
-import { hooks as metaMaskHooks, metaMask } from '../../web3Connectors/connectors/metaMask';
-import { hooks as networkHooks, network } from '../../web3Connectors/connectors/network';
-import { hooks as walletConnectHooks, walletConnect } from '../../web3Connectors/connectors/walletConnect';
 
 import '../../../App.css';
-import Card from './card/Card'
 import ContactFooter from "./ContactFooter";
 
 

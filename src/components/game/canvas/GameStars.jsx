@@ -1,8 +1,6 @@
 import { Stars } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
-import { useRef, useEffect } from 'react';
-// Mine
-
+import { useRef } from 'react';
 
 const GameStars = () => {
 

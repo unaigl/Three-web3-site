@@ -1,5 +1,5 @@
-import React, { utilsContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 // Mine
 import Modal from './modals/Modal';
 import PlayModal from './modals/PlayModal';

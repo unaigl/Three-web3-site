@@ -1,16 +1,16 @@
-import { coinbaseWallet, hooks } from '../connectors/coinbaseWallet'
-import { useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useEffect } from 'react'
 import '../../../App.css'
 import Card from '../../game/outCanvas/card/Card'
-import { getContract } from "../../web3Connectors/transactionCards/contract"
-import { claimToken, burnToken } from './transaction'
+import { coinbaseWallet, hooks } from '../connectors/coinbaseWallet'
+import { burnToken, claimToken } from './transaction'
 
 
 
 export default function TransactionCoinbaseWallet(props) {
 
-  const { useChainId, useAccounts, useError, useIsActivating, useIsActive, useProvider, useENSNames } = hooks
+  // const { useChainId, useAccounts, useError, useIsActivating, useIsActive, useProvider, useENSNames } = hooks
+  const { useChainId, useAccounts, useProvider } = hooks
 
   const chainId = useChainId()
   const accounts = useAccounts()
@@ -58,5 +58,8 @@ export default function TransactionCoinbaseWallet(props) {
 }
 
 TransactionCoinbaseWallet.prototype = {
-  tokens: PropTypes.number.isRequired
+  tokens: PropTypes.number.isRequired,
+  setbuttonOpenModal: PropTypes.func.isRequired,
+  buttonOpenModal: PropTypes.func.isRequired,
+
 }
